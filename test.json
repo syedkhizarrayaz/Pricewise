@@ -1,0 +1,693 @@
+[
+  {
+    "position": 1,
+    "title": "Special K Cereal Red Berries",
+    "productId": "12914019089147418405",
+    "productLink": "https://www.google.com/shopping/product/12914019089147418405?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEyNzc0NjQ4MzUyOTM4MzI0NDR8UFJPRF9QQ18xMjc3NDY0ODM1MjkzODMyNDQ0IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTI5MTQwMTkwODkxNDc0MTg0MDUiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiI2MzQyMDQyNzIwNjQxNTQzNjQ2IiwiaW1hZ2VEb2NpZCI6IjE2MDQxNDY5MTgyNDg0NDIyMDQ2IiwiZ3BjaWQiOiIxMjc3NDY0ODM1MjkzODMyNDQ0IiwibWlkIjoiNTc2NDYyNzcwODc1OTExNzY2IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEyNzc0NjQ4MzUyOTM4MzI0NDR8UFJPRF9QQ18xMjc3NDY0ODM1MjkzODMyNDQ0IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTI5MTQwMTkwODkxNDc0MTg0MDUiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiI2MzQyMDQyNzIwNjQxNTQzNjQ2IiwiaW1hZ2VEb2NpZCI6IjE2MDQxNDY5MTgyNDg0NDIyMDQ2IiwiZ3BjaWQiOiIxMjc3NDY0ODM1MjkzODMyNDQ0IiwibWlkIjoiNTc2NDYyNzcwODc1OTExNzY2IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 10000,
+    "rating": 4.6,
+    "delivery": "Same-day delivery $20",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/69ee7c78-a079-4910-9c91-3ee2791c3411.jpeg"
+  },
+  {
+    "position": 2,
+    "title": "Kellogg's Stranger Things Demogorgon Crunch Cereal",
+    "productId": "18409949929200854691",
+    "productLink": "https://www.google.com/shopping/product/18409949929200854691?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzk3NjcxMzI5MDQwODY2MzAxOXxQUk9EX1BDXzk3NjcxMzI5MDQwODY2MzAxOSIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjE4NDA5OTQ5OTI5MjAwODU0NjkxIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTgxMTAwOTAwNzc0MTEyMTk2MDgiLCJpbWFnZURvY2lkIjoiNjg4NjUzMjk4NDAyNTQxODk4OCIsImdwY2lkIjoiOTc2NzEzMjkwNDA4NjYzMDE5IiwibWlkIjoiNTc2NDYyODQyMTEwNTA2NjA2IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzk3NjcxMzI5MDQwODY2MzAxOXxQUk9EX1BDXzk3NjcxMzI5MDQwODY2MzAxOSIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjE4NDA5OTQ5OTI5MjAwODU0NjkxIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTgxMTAwOTAwNzc0MTEyMTk2MDgiLCJpbWFnZURvY2lkIjoiNjg4NjUzMjk4NDAyNTQxODk4OCIsImdwY2lkIjoiOTc2NzEzMjkwNDA4NjYzMDE5IiwibWlkIjoiNTc2NDYyODQyMTEwNTA2NjA2IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "H-E-B",
+    "reviews": 35,
+    "rating": 4.5,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/c009210c-7e11-4f50-a068-d1d05d93a960.jpeg"
+  },
+  {
+    "position": 3,
+    "title": "Raisin Bran Breakfast Cereal Original",
+    "productId": "1219259979186450281",
+    "productLink": "https://www.google.com/shopping/product/1219259979186450281?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzM5NjgwODEwNzcwMTg4NzMyMzd8UFJPRF9QQ18zOTY4MDgxMDc3MDE4ODczMjM3IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTIxOTI1OTk3OTE4NjQ1MDI4MSIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjQ0NDAxMzE5NDg2NDMzMTU1OTciLCJpbWFnZURvY2lkIjoiMjU3ODA1MDMxNzE4MTY4ODE3MSIsImdwY2lkIjoiMzk2ODA4MTA3NzAxODg3MzIzNyIsIm1pZCI6IjU3NjQ2MjkwMTE0NTQzMjU0MCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzM5NjgwODEwNzcwMTg4NzMyMzd8UFJPRF9QQ18zOTY4MDgxMDc3MDE4ODczMjM3IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTIxOTI1OTk3OTE4NjQ1MDI4MSIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjQ0NDAxMzE5NDg2NDMzMTU1OTciLCJpbWFnZURvY2lkIjoiMjU3ODA1MDMxNzE4MTY4ODE3MSIsImdwY2lkIjoiMzk2ODA4MTA3NzAxODg3MzIzNyIsIm1pZCI6IjU3NjQ2MjkwMTE0NTQzMjU0MCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$2.99",
+    "extractedPrice": 2.99,
+    "source": "CVS Pharmacy",
+    "reviews": 33,
+    "rating": 4.5,
+    "extensions": [
+      "In store, PLANO"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/4c0de1fa-b163-41d8-898f-1994e1bbea4e.jpeg"
+  },
+  {
+    "position": 4,
+    "title": "Kellogg's Corn Flakes Cereal",
+    "productId": "9039949273864766034",
+    "productLink": "https://www.google.com/shopping/product/9039949273864766034?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzQ4ODgyNzk5MzQ3Mjc1ODA3ODZ8UFJPRF9QQ180ODg4Mjc5OTM0NzI3NTgwNzg2IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiOTAzOTk0OTI3Mzg2NDc2NjAzNCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExMjI4ODA2ODUxOTI0MDgxMzAzIiwiaW1hZ2VEb2NpZCI6IjE3ODA2NzM2OTgxMzUxNzU1MzM5IiwiZ3BjaWQiOiI0ODg4Mjc5OTM0NzI3NTgwNzg2IiwibWlkIjoiNTc2NDYyNDE3NTkzMjY3OTY5IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzQ4ODgyNzk5MzQ3Mjc1ODA3ODZ8UFJPRF9QQ180ODg4Mjc5OTM0NzI3NTgwNzg2IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiOTAzOTk0OTI3Mzg2NDc2NjAzNCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExMjI4ODA2ODUxOTI0MDgxMzAzIiwiaW1hZ2VEb2NpZCI6IjE3ODA2NzM2OTgxMzUxNzU1MzM5IiwiZ3BjaWQiOiI0ODg4Mjc5OTM0NzI3NTgwNzg2IiwibWlkIjoiNTc2NDYyNDE3NTkzMjY3OTY5IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$3.98",
+    "extractedPrice": 3.98,
+    "source": "Walmart",
+    "reviews": 21000,
+    "rating": 4.8,
+    "delivery": "Same-day delivery $20",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/77d3fa0d-9d13-4b4a-9908-ae7868a738e1.jpeg"
+  },
+  {
+    "position": 5,
+    "title": "Kellogg's Blueberry Bran Crunch Cereal",
+    "productId": "1740394624623992018",
+    "productLink": "https://www.google.com/shopping/product/1740394624623992018?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzgyNTM0MDI5NjI0ODM1NjA5NTV8UFJPRF9QQ184MjUzNDAyOTYyNDgzNTYwOTU1IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTc0MDM5NDYyNDYyMzk5MjAxOCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjU1MjU4NDQ5MDM1OTIwMjQ1NjUiLCJpbWFnZURvY2lkIjoiNjQzMjc3NDU2NzI1Nzc3OTAzNiIsImdwY2lkIjoiODI1MzQwMjk2MjQ4MzU2MDk1NSIsIm1pZCI6IjU3NjQ2MjgwNjkxMDM4MTg4OCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzgyNTM0MDI5NjI0ODM1NjA5NTV8UFJPRF9QQ184MjUzNDAyOTYyNDgzNTYwOTU1IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTc0MDM5NDYyNDYyMzk5MjAxOCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjU1MjU4NDQ5MDM1OTIwMjQ1NjUiLCJpbWFnZURvY2lkIjoiNjQzMjc3NDU2NzI1Nzc3OTAzNiIsImdwY2lkIjoiODI1MzQwMjk2MjQ4MzU2MDk1NSIsIm1pZCI6IjU3NjQ2MjgwNjkxMDM4MTg4OCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$3.85",
+    "extractedPrice": 3.85,
+    "source": "Dollar General",
+    "reviews": 108,
+    "rating": 3.8,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/c17079a6-db87-4091-94f8-6015abf9a2ac.jpeg"
+  },
+  {
+    "position": 6,
+    "title": "Kellogg's Crumbl Cereal Chocolatey Chip Cookie",
+    "productId": "16994113091823085059",
+    "productLink": "https://www.google.com/shopping/product/16994113091823085059?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzQ5NzE4MzM4MzUyNzY1NTAyNTB8UFJPRF9QQ180OTcxODMzODM1Mjc2NTUwMjUwIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTY5OTQxMTMwOTE4MjMwODUwNTkiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxNjYyNzI3Mzc0MTM4NzQ0ODgyNiIsImltYWdlRG9jaWQiOiIxNDczNzY3MDg3NzE4NzkzMTM5MCIsImdwY2lkIjoiNDk3MTgzMzgzNTI3NjU1MDI1MCIsIm1pZCI6IjU3NjQ2Mjc5NjA1MTM2ODYzNSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzQ5NzE4MzM4MzUyNzY1NTAyNTB8UFJPRF9QQ180OTcxODMzODM1Mjc2NTUwMjUwIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTY5OTQxMTMwOTE4MjMwODUwNTkiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxNjYyNzI3Mzc0MTM4NzQ0ODgyNiIsImltYWdlRG9jaWQiOiIxNDczNzY3MDg3NzE4NzkzMTM5MCIsImdwY2lkIjoiNDk3MTgzMzgzNTI3NjU1MDI1MCIsIm1pZCI6IjU3NjQ2Mjc5NjA1MTM2ODYzNSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.28",
+    "extractedPrice": 4.28,
+    "source": "H-E-B",
+    "reviews": 5,
+    "rating": 1,
+    "extensions": [
+      "In store, Melissa"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/8c500a0e-7fed-41ed-9588-3514c2962020.jpeg"
+  },
+  {
+    "position": 7,
+    "title": "Kellogg's Howlin' Confetti Cake Cereal",
+    "productId": "5183741601245846244",
+    "productLink": "https://www.google.com/shopping/product/5183741601245846244?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE4MjQ1OTE3NTkyNjMwNzI0MDgxfFBST0RfUENfMTgyNDU5MTc1OTI2MzA3MjQwODEiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI1MTgzNzQxNjAxMjQ1ODQ2MjQ0IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTQyMTUzNjU2MTI2NDE0NTMwNzQiLCJpbWFnZURvY2lkIjoiNDI5NjkxOTY4OTU0OTc0NjEiLCJncGNpZCI6IjE4MjQ1OTE3NTkyNjMwNzI0MDgxIiwibWlkIjoiNTc2NDYyODMyNzU1NTE0ODAxIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE4MjQ1OTE3NTkyNjMwNzI0MDgxfFBST0RfUENfMTgyNDU5MTc1OTI2MzA3MjQwODEiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI1MTgzNzQxNjAxMjQ1ODQ2MjQ0IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTQyMTUzNjU2MTI2NDE0NTMwNzQiLCJpbWFnZURvY2lkIjoiNDI5NjkxOTY4OTU0OTc0NjEiLCJncGNpZCI6IjE4MjQ1OTE3NTkyNjMwNzI0MDgxIiwibWlkIjoiNTc2NDYyODMyNzU1NTE0ODAxIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$4.28",
+    "extractedPrice": 4.28,
+    "source": "Walmart",
+    "reviews": 55,
+    "rating": 3.9,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/98c00bab-e50f-4d90-b684-07181258866a.jpeg"
+  },
+  {
+    "position": 8,
+    "title": "Kellogg's Breakfast Cereal Frosted Flakes",
+    "productId": "1877718831490497846",
+    "productLink": "https://www.google.com/shopping/product/1877718831490497846?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzMwNDc3OTU3NTk4NDA2MjM3NTV8UFJPRF9QQ18zMDQ3Nzk1NzU5ODQwNjIzNzU1IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTg3NzcxODgzMTQ5MDQ5Nzg0NiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6Ijg1MDM4Njc4OTA5NDcyOTI4OTUiLCJpbWFnZURvY2lkIjoiMTEzMTc2MTA4OTIzODYzMDk2MjYiLCJncGNpZCI6IjMwNDc3OTU3NTk4NDA2MjM3NTUiLCJtaWQiOiI1NzY0NjI2OTMxNjEzMTgzMjEiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzMwNDc3OTU3NTk4NDA2MjM3NTV8UFJPRF9QQ18zMDQ3Nzk1NzU5ODQwNjIzNzU1IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTg3NzcxODgzMTQ5MDQ5Nzg0NiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6Ijg1MDM4Njc4OTA5NDcyOTI4OTUiLCJpbWFnZURvY2lkIjoiMTEzMTc2MTA4OTIzODYzMDk2MjYiLCJncGNpZCI6IjMwNDc3OTU3NTk4NDA2MjM3NTUiLCJtaWQiOiI1NzY0NjI2OTMxNjEzMTgzMjEiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$8.67",
+    "extractedPrice": 8.67,
+    "source": "Sam's Club",
+    "reviews": 18000,
+    "rating": 4.7,
+    "extensions": [
+      "In store, Dallas"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/bd33cca8-ff62-4597-96fa-a97ab0b734cc.jpeg"
+  },
+  {
+    "position": 9,
+    "title": "Special K Fruit & Yogurt Breakfast Cereal",
+    "productId": "1406209214077287114",
+    "productLink": "https://www.google.com/shopping/product/1406209214077287114?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzIwNDUwMjE4OTU4NDA4MTAzNDR8UFJPRF9QQ18yMDQ1MDIxODk1ODQwODEwMzQ0IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTQwNjIwOTIxNDA3NzI4NzExNCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE0MzQyMDI4MjYzODEyNTE4OTczIiwiaW1hZ2VEb2NpZCI6IjE0MjI1NjQ0MzcyOTIwNTI1ODUiLCJncGNpZCI6IjIwNDUwMjE4OTU4NDA4MTAzNDQiLCJtaWQiOiI1NzY0NjI4NTQxMjQ1ODkzMTQiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzIwNDUwMjE4OTU4NDA4MTAzNDR8UFJPRF9QQ18yMDQ1MDIxODk1ODQwODEwMzQ0IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTQwNjIwOTIxNDA3NzI4NzExNCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE0MzQyMDI4MjYzODEyNTE4OTczIiwiaW1hZ2VEb2NpZCI6IjE0MjI1NjQ0MzcyOTIwNTI1ODUiLCJncGNpZCI6IjIwNDUwMjE4OTU4NDA4MTAzNDQiLCJtaWQiOiI1NzY0NjI4NTQxMjQ1ODkzMTQiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$5.39",
+    "extractedPrice": 5.39,
+    "source": "CVS Pharmacy",
+    "reviews": 3800,
+    "rating": 4.7,
+    "delivery": "Free delivery on $35+",
+    "extensions": [
+      "In store, PLANO"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/251d4f7c-6391-46bb-810d-8b1cc0ca9ca7.jpeg"
+  },
+  {
+    "position": 10,
+    "title": "Kellogg's Complete Bran Breakfast Cereal",
+    "productId": "9780145596138819918",
+    "productLink": "https://www.google.com/shopping/product/9780145596138819918?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEwODAyNDQwODY5Mjg4NTkwMjB8UFJPRF9QQ18xMDgwMjQ0MDg2OTI4ODU5MDIwIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiOTc4MDE0NTU5NjEzODgxOTkxOCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjQ2NTM0Nzc5MDUzNjA2NzQ3NzUiLCJpbWFnZURvY2lkIjoiMTQ2NDg0MjQwMjU0MTgxNTcxNyIsImdwY2lkIjoiMTA4MDI0NDA4NjkyODg1OTAyMCIsIm1pZCI6IjU3NjQ2Mjc2NDg1NTQ1MTM3MCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEwODAyNDQwODY5Mjg4NTkwMjB8UFJPRF9QQ18xMDgwMjQ0MDg2OTI4ODU5MDIwIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiOTc4MDE0NTU5NjEzODgxOTkxOCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjQ2NTM0Nzc5MDUzNjA2NzQ3NzUiLCJpbWFnZURvY2lkIjoiMTQ2NDg0MjQwMjU0MTgxNTcxNyIsImdwY2lkIjoiMTA4MDI0NDA4NjkyODg1OTAyMCIsIm1pZCI6IjU3NjQ2Mjc2NDg1NTQ1MTM3MCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$3.98",
+    "extractedPrice": 3.98,
+    "source": "H-E-B",
+    "reviews": 67,
+    "rating": 4.6,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/a929d3db-cf47-4514-bec2-b483b385fd72.jpeg"
+  },
+  {
+    "position": 11,
+    "title": "Kellogg's Raisin Bran Crunch Breakfast Cereal",
+    "productId": "5500937728398961409",
+    "productLink": "https://www.google.com/shopping/product/5500937728398961409?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0NTM5MDc2NDEzNTkyNDAxNjQzfFBST0RfUENfMTQ1MzkwNzY0MTM1OTI0MDE2NDMiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI1NTAwOTM3NzI4Mzk4OTYxNDA5IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTQ3MDE0MTg0ODIzNzM5MjM2MDkiLCJpbWFnZURvY2lkIjoiMzM4MzE4MTYyNDQ4MDk0NTkwMCIsImdwY2lkIjoiMTQ1MzkwNzY0MTM1OTI0MDE2NDMiLCJtaWQiOiI1NzY0NjI4MDgwNTc1NTIyODgiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0NTM5MDc2NDEzNTkyNDAxNjQzfFBST0RfUENfMTQ1MzkwNzY0MTM1OTI0MDE2NDMiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI1NTAwOTM3NzI4Mzk4OTYxNDA5IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTQ3MDE0MTg0ODIzNzM5MjM2MDkiLCJpbWFnZURvY2lkIjoiMzM4MzE4MTYyNDQ4MDk0NTkwMCIsImdwY2lkIjoiMTQ1MzkwNzY0MTM1OTI0MDE2NDMiLCJtaWQiOiI1NzY0NjI4MDgwNTc1NTIyODgiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 3200,
+    "rating": 4.6,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/39a55d9b-5817-48ad-9f50-4acb6244a273.jpeg"
+  },
+  {
+    "position": 12,
+    "title": "Kellogg's Special K Banana & Creme Breakfast Cereal",
+    "productId": "15458416341547858752",
+    "productLink": "https://www.google.com/shopping/product/15458416341547858752?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzM2NDQxNjU0MjQ0NjU3Njk5ODl8UFJPRF9QQ18zNjQ0MTY1NDI0NDY1NzY5OTg5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTU0NTg0MTYzNDE1NDc4NTg3NTIiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiI1ODU1NTU3MTUwOTEwNzE4MTE5IiwiaW1hZ2VEb2NpZCI6IjE0MDQzNzkzODg1MjQxNTQ5MjUyIiwiZ3BjaWQiOiIzNjQ0MTY1NDI0NDY1NzY5OTg5IiwibWlkIjoiNTc2NDYyODMyNjAzNTMzMDk2IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzM2NDQxNjU0MjQ0NjU3Njk5ODl8UFJPRF9QQ18zNjQ0MTY1NDI0NDY1NzY5OTg5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTU0NTg0MTYzNDE1NDc4NTg3NTIiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiI1ODU1NTU3MTUwOTEwNzE4MTE5IiwiaW1hZ2VEb2NpZCI6IjE0MDQzNzkzODg1MjQxNTQ5MjUyIiwiZ3BjaWQiOiIzNjQ0MTY1NDI0NDY1NzY5OTg5IiwibWlkIjoiNTc2NDYyODMyNjAzNTMzMDk2IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$5.29",
+    "extractedPrice": 5.29,
+    "source": "Target",
+    "reviews": 31,
+    "rating": 4.4,
+    "delivery": "Same-day delivery",
+    "extensions": [
+      "In store, Garland"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/6794de65-c920-47ef-91a8-d4513faab4a5.jpeg"
+  },
+  {
+    "position": 13,
+    "title": "Kellogg's Corn Pops Cereal",
+    "productId": "15914934888844436000",
+    "productLink": "https://www.google.com/shopping/product/15914934888844436000?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzUwNDk2MDkyMTAwMTY3MTU2NHxQUk9EX1BDXzUwNDk2MDkyMTAwMTY3MTU2NCIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjE1OTE0OTM0ODg4ODQ0NDM2MDAwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTYzNTMzODcyMjE5NjQzMjA4OTciLCJpbWFnZURvY2lkIjoiMTc0NTA2NjkwMTAwNjcxNTE5NzgiLCJncGNpZCI6IjUwNDk2MDkyMTAwMTY3MTU2NCIsIm1pZCI6IjU3NjQ2Mjc3NzU4NTc5MTc4NSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzUwNDk2MDkyMTAwMTY3MTU2NHxQUk9EX1BDXzUwNDk2MDkyMTAwMTY3MTU2NCIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjE1OTE0OTM0ODg4ODQ0NDM2MDAwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTYzNTMzODcyMjE5NjQzMjA4OTciLCJpbWFnZURvY2lkIjoiMTc0NTA2NjkwMTAwNjcxNTE5NzgiLCJncGNpZCI6IjUwNDk2MDkyMTAwMTY3MTU2NCIsIm1pZCI6IjU3NjQ2Mjc3NzU4NTc5MTc4NSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 8400,
+    "rating": 4.5,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/17dc621c-5ff1-4069-b6b1-5e43193952f9.jpeg"
+  },
+  {
+    "position": 14,
+    "title": "Kellogg's Variety Pack Breakfast Cereal",
+    "productId": "15493044818810695348",
+    "productLink": "https://www.google.com/shopping/product/15493044818810695348?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE2MzU0MDgzNTA4NDM5Njc2MjY5fFBST0RfUENfMTYzNTQwODM1MDg0Mzk2NzYyNjkiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIxNTQ5MzA0NDgxODgxMDY5NTM0OCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE3MDY1MzY5MDI4Nzc5OTA3ODUzIiwiaW1hZ2VEb2NpZCI6IjE0OTQxNzQ2NTUzNjM4MTUwMDUzIiwiZ3BjaWQiOiIxNjM1NDA4MzUwODQzOTY3NjI2OSIsIm1pZCI6IiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE2MzU0MDgzNTA4NDM5Njc2MjY5fFBST0RfUENfMTYzNTQwODM1MDg0Mzk2NzYyNjkiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIxNTQ5MzA0NDgxODgxMDY5NTM0OCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE3MDY1MzY5MDI4Nzc5OTA3ODUzIiwiaW1hZ2VEb2NpZCI6IjE0OTQxNzQ2NTUzNjM4MTUwMDUzIiwiZ3BjaWQiOiIxNjM1NDA4MzUwODQzOTY3NjI2OSIsIm1pZCI6IiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$5.58",
+    "extractedPrice": 5.58,
+    "source": "H-E-B",
+    "reviews": 7,
+    "rating": 4.1,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/cd85af20-07ce-407a-bba7-d380cf6f99de.jpeg"
+  },
+  {
+    "position": 15,
+    "title": "Crispix Breakfast Cereal",
+    "productId": "9012315443705436787",
+    "productLink": "https://www.google.com/shopping/product/9012315443705436787?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzQ4MDY2NDIwMjE1NTcxNzI2Mjl8UFJPRF9QQ180ODA2NjQyMDIxNTU3MTcyNjI5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiOTAxMjMxNTQ0MzcwNTQzNjc4NyIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjEzMjQ2NTk3OTA3MjU3MDU3NzYwIiwiaW1hZ2VEb2NpZCI6IjEyOTUyMTQzNjE2MjcxNTM4OTcwIiwiZ3BjaWQiOiI0ODA2NjQyMDIxNTU3MTcyNjI5IiwibWlkIjoiNTc2NDYyNjgxNzQxMzg1MTE0IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzQ4MDY2NDIwMjE1NTcxNzI2Mjl8UFJPRF9QQ180ODA2NjQyMDIxNTU3MTcyNjI5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiOTAxMjMxNTQ0MzcwNTQzNjc4NyIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjEzMjQ2NTk3OTA3MjU3MDU3NzYwIiwiaW1hZ2VEb2NpZCI6IjEyOTUyMTQzNjE2MjcxNTM4OTcwIiwiZ3BjaWQiOiI0ODA2NjQyMDIxNTU3MTcyNjI5IiwibWlkIjoiNTc2NDYyNjgxNzQxMzg1MTE0IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$5.39",
+    "extractedPrice": 5.39,
+    "source": "CVS Pharmacy",
+    "reviews": 543,
+    "rating": 4.4,
+    "delivery": "Free delivery on $35+",
+    "extensions": [
+      "In store, RICHARDSON"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/a0b2693a-b41b-4811-b45c-ec6c1c069f2b.jpeg"
+  },
+  {
+    "position": 16,
+    "title": "Kellogg's Breakfast Cereal Frosted Mini Wheats",
+    "productId": "13440730246182572194",
+    "productLink": "https://www.google.com/shopping/product/13440730246182572194?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0NzIzODA1NDE1MTk3OTI0OTIxfFBST0RfUENfMTQ3MjM4MDU0MTUxOTc5MjQ5MjEiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIxMzQ0MDczMDI0NjE4MjU3MjE5NCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE0NTEwNjA5NzA0NDAyMDUyNDUwIiwiaW1hZ2VEb2NpZCI6IjE3OTE2MTA1NDA2NDg2MjIxNjY3IiwiZ3BjaWQiOiIxNDcyMzgwNTQxNTE5NzkyNDkyMSIsIm1pZCI6IjU3NjQ2Mjc4MzQ0NjQ2ODc5OCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0NzIzODA1NDE1MTk3OTI0OTIxfFBST0RfUENfMTQ3MjM4MDU0MTUxOTc5MjQ5MjEiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIxMzQ0MDczMDI0NjE4MjU3MjE5NCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE0NTEwNjA5NzA0NDAyMDUyNDUwIiwiaW1hZ2VEb2NpZCI6IjE3OTE2MTA1NDA2NDg2MjIxNjY3IiwiZ3BjaWQiOiIxNDcyMzgwNTQxNTE5NzkyNDkyMSIsIm1pZCI6IjU3NjQ2Mjc4MzQ0NjQ2ODc5OCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$3.98",
+    "extractedPrice": 3.98,
+    "source": "Walmart",
+    "reviews": 4100,
+    "rating": 4.6,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/683510ee-587c-4038-8af3-441f1210610a.jpeg"
+  },
+  {
+    "position": 17,
+    "title": "Kellogg's Special K Zero Strawberry Creme Breakfast Cereal",
+    "productId": "6877435650481902276",
+    "productLink": "https://www.google.com/shopping/product/6877435650481902276?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzExNjA3NTY1MTA1NTExNzY4OTg4fFBST0RfUENfMTE2MDc1NjUxMDU1MTE3Njg5ODgiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI2ODc3NDM1NjUwNDgxOTAyMjc2IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTY1NzkyMTU0NDU3NDc4NjI3MDQiLCJpbWFnZURvY2lkIjoiMzY5MzQ2MTU2NDY3OTk2MTI3NCIsImdwY2lkIjoiMTE2MDc1NjUxMDU1MTE3Njg5ODgiLCJtaWQiOiI1NzY0NjI4MzQ0NTk4NTQyODAiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzExNjA3NTY1MTA1NTExNzY4OTg4fFBST0RfUENfMTE2MDc1NjUxMDU1MTE3Njg5ODgiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI2ODc3NDM1NjUwNDgxOTAyMjc2IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTY1NzkyMTU0NDU3NDc4NjI3MDQiLCJpbWFnZURvY2lkIjoiMzY5MzQ2MTU2NDY3OTk2MTI3NCIsImdwY2lkIjoiMTE2MDc1NjUxMDU1MTE3Njg5ODgiLCJtaWQiOiI1NzY0NjI4MzQ0NTk4NTQyODAiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$7.49",
+    "extractedPrice": 7.49,
+    "source": "Kroger",
+    "reviews": 117,
+    "rating": 2.5,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/f5891d95-ba42-4b30-8cdb-9df4579dcd3e.jpeg"
+  },
+  {
+    "position": 18,
+    "title": "Kellogg's Honey Smacks Breakfast Cereal Family Size",
+    "productId": "7163443600918678356",
+    "productLink": "https://www.google.com/shopping/product/7163443600918678356?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzgxNjUxODE1MjA1MTM5MjA0NzN8UFJPRF9QQ184MTY1MTgxNTIwNTEzOTIwNDczIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiNzE2MzQ0MzYwMDkxODY3ODM1NiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE2MzIwNjQzNDA5MzE5MjUyODgiLCJpbWFnZURvY2lkIjoiMzkyMTg2MzU5OTUwMjQ0NTk1MCIsImdwY2lkIjoiODE2NTE4MTUyMDUxMzkyMDQ3MyIsIm1pZCI6IiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzgxNjUxODE1MjA1MTM5MjA0NzN8UFJPRF9QQ184MTY1MTgxNTIwNTEzOTIwNDczIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiNzE2MzQ0MzYwMDkxODY3ODM1NiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjE2MzIwNjQzNDA5MzE5MjUyODgiLCJpbWFnZURvY2lkIjoiMzkyMTg2MzU5OTUwMjQ0NTk1MCIsImdwY2lkIjoiODE2NTE4MTUyMDUxMzkyMDQ3MyIsIm1pZCI6IiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "H-E-B",
+    "reviews": 119,
+    "rating": 1.8,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/6b8a603d-05e0-4925-9899-5dd9bbf93c8e.jpeg"
+  },
+  {
+    "position": 19,
+    "title": "Special K Chocolatey Delight Breakfast Cereal",
+    "productId": "3801231625667697659",
+    "productLink": "https://www.google.com/shopping/product/3801231625667697659?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEzOTMzOTMwNjc2OTcyMzkzODgwfFBST0RfUENfMTM5MzM5MzA2NzY5NzIzOTM4ODAiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIzODAxMjMxNjI1NjY3Njk3NjU5IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNjg5ODYwNjk5NjYxOTM4Mjg3OSIsImltYWdlRG9jaWQiOiIxNDU3NTYyOTk3NDU4MjQ0MjcxIiwiZ3BjaWQiOiIxMzkzMzkzMDY3Njk3MjM5Mzg4MCIsIm1pZCI6IjU3NjQ2MjUyMTQzMzkxMTA0OCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEzOTMzOTMwNjc2OTcyMzkzODgwfFBST0RfUENfMTM5MzM5MzA2NzY5NzIzOTM4ODAiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIzODAxMjMxNjI1NjY3Njk3NjU5IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNjg5ODYwNjk5NjYxOTM4Mjg3OSIsImltYWdlRG9jaWQiOiIxNDU3NTYyOTk3NDU4MjQ0MjcxIiwiZ3BjaWQiOiIxMzkzMzkzMDY3Njk3MjM5Mzg4MCIsIm1pZCI6IjU3NjQ2MjUyMTQzMzkxMTA0OCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 3000,
+    "rating": 4.6,
+    "extensions": [
+      "In store, Allen"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/26c6750e-e25a-47f0-aa50-aec1870be70e.jpeg"
+  },
+  {
+    "position": 20,
+    "title": "Kellogg's Frosted Flakes Pumpkin Spice Cereal",
+    "productId": "6411300233617952821",
+    "productLink": "https://www.google.com/shopping/product/6411300233617952821?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEyNDQ3Nzg3NDQwMTAzNzkxNDM1fFBST0RfUENfMTI0NDc3ODc0NDAxMDM3OTE0MzUiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI2NDExMzAwMjMzNjE3OTUyODIxIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTgzMzUzNzk5Njg5MTM1MzA4MzUiLCJpbWFnZURvY2lkIjoiMTI4MjU3NDU3NTQxNTExMzAyMzkiLCJncGNpZCI6IjEyNDQ3Nzg3NDQwMTAzNzkxNDM1IiwibWlkIjoiNTc2NDYyODM2MTQ3MDc4NDAzIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEyNDQ3Nzg3NDQwMTAzNzkxNDM1fFBST0RfUENfMTI0NDc3ODc0NDAxMDM3OTE0MzUiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI2NDExMzAwMjMzNjE3OTUyODIxIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTgzMzUzNzk5Njg5MTM1MzA4MzUiLCJpbWFnZURvY2lkIjoiMTI4MjU3NDU3NTQxNTExMzAyMzkiLCJncGNpZCI6IjEyNDQ3Nzg3NDQwMTAzNzkxNDM1IiwibWlkIjoiNTc2NDYyODM2MTQ3MDc4NDAzIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$4.69",
+    "extractedPrice": 4.69,
+    "source": "Target",
+    "reviews": 30,
+    "rating": 4.1,
+    "delivery": "Same-day delivery",
+    "extensions": [
+      "In store, Wylie"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/cf30d354-1266-4030-a18c-e3df1b7da676.jpeg"
+  },
+  {
+    "position": 21,
+    "title": "Kellogg's Special K Cereal Pumpkin Spice",
+    "productId": "4401059066349757804",
+    "productLink": "https://www.google.com/shopping/product/4401059066349757804?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzg2Nzc1ODcwMzcyMDk5NDAxMDF8UFJPRF9QQ184Njc3NTg3MDM3MjA5OTQwMTAxIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiNDQwMTA1OTA2NjM0OTc1NzgwNCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjcyMDkzNzUwOTc0OTg4NTAyNzMiLCJpbWFnZURvY2lkIjoiODU0MDMxNDU3MjQ2NjM3NDU2MyIsImdwY2lkIjoiODY3NzU4NzAzNzIwOTk0MDEwMSIsIm1pZCI6IjU3NjQ2MjgzMDE3MDM1Nzk4MCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzg2Nzc1ODcwMzcyMDk5NDAxMDF8UFJPRF9QQ184Njc3NTg3MDM3MjA5OTQwMTAxIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiNDQwMTA1OTA2NjM0OTc1NzgwNCIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjcyMDkzNzUwOTc0OTg4NTAyNzMiLCJpbWFnZURvY2lkIjoiODU0MDMxNDU3MjQ2NjM3NDU2MyIsImdwY2lkIjoiODY3NzU4NzAzNzIwOTk0MDEwMSIsIm1pZCI6IjU3NjQ2MjgzMDE3MDM1Nzk4MCIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "H-E-B",
+    "reviews": 162,
+    "rating": 4.4,
+    "extensions": [
+      "In store, McKinney"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/716bba5b-b0d4-470f-9760-6420b4d0d54f.jpeg"
+  },
+  {
+    "position": 22,
+    "title": "KELLOGG'S Froot Loops Breakfast Cereal",
+    "productId": "1669999866835184975",
+    "productLink": "https://www.google.com/shopping/product/1669999866835184975?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0MTc5OTc4NDQ2NDA5MTQ1Njk3fFBST0RfUENfMTQxNzk5Nzg0NDY0MDkxNDU2OTciLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIxNjY5OTk5ODY2ODM1MTg0OTc1IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTU2ODI1NDkyMjE0NzA2MzY0MzQiLCJpbWFnZURvY2lkIjoiOTk4NzcwMjQ3MzI2OTU5MDkwNSIsImdwY2lkIjoiMTQxNzk5Nzg0NDY0MDkxNDU2OTciLCJtaWQiOiI1NzY0NjI3Mzc0NzM1OTE4NjgiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0MTc5OTc4NDQ2NDA5MTQ1Njk3fFBST0RfUENfMTQxNzk5Nzg0NDY0MDkxNDU2OTciLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIxNjY5OTk5ODY2ODM1MTg0OTc1IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTU2ODI1NDkyMjE0NzA2MzY0MzQiLCJpbWFnZURvY2lkIjoiOTk4NzcwMjQ3MzI2OTU5MDkwNSIsImdwY2lkIjoiMTQxNzk5Nzg0NDY0MDkxNDU2OTciLCJtaWQiOiI1NzY0NjI3Mzc0NzM1OTE4NjgiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 15000,
+    "rating": 4.8,
+    "delivery": "Same-day delivery $20",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/549db3e8-3a3d-46af-9cc5-aa655d7efd3a.jpeg"
+  },
+  {
+    "position": 23,
+    "title": "Special K Breakfast Cereal Vanilla and Almond",
+    "productId": "1391505032481234852",
+    "productLink": "https://www.google.com/shopping/product/1391505032481234852?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzcxMTAwOTM4NTU5MjgyMzEzMzl8UFJPRF9QQ183MTEwMDkzODU1OTI4MjMxMzM5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTM5MTUwNTAzMjQ4MTIzNDg1MiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExODQ5Mjg1NDIyNTQwODc0NDkyIiwiaW1hZ2VEb2NpZCI6IjEyODQyNTA0OTE4NDMzNDIxNjAzIiwiZ3BjaWQiOiI3MTEwMDkzODU1OTI4MjMxMzM5IiwibWlkIjoiNTc2NDYyNzc1OTQ4NzYxMTYyIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzcxMTAwOTM4NTU5MjgyMzEzMzl8UFJPRF9QQ183MTEwMDkzODU1OTI4MjMxMzM5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTM5MTUwNTAzMjQ4MTIzNDg1MiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExODQ5Mjg1NDIyNTQwODc0NDkyIiwiaW1hZ2VEb2NpZCI6IjEyODQyNTA0OTE4NDMzNDIxNjAzIiwiZ3BjaWQiOiI3MTEwMDkzODU1OTI4MjMxMzM5IiwibWlkIjoiNTc2NDYyNzc1OTQ4NzYxMTYyIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$5.39",
+    "extractedPrice": 5.39,
+    "source": "CVS Pharmacy",
+    "reviews": 2800,
+    "rating": 4.7,
+    "delivery": "Free delivery on $35+",
+    "extensions": [
+      "In store, PLANO"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/89f660b6-7b4c-45ea-9e5c-507cc96d1c87.jpeg"
+  },
+  {
+    "position": 24,
+    "title": "Frosted Bran Cereal",
+    "productId": "3853829054673897030",
+    "productLink": "https://www.google.com/shopping/product/3853829054673897030?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE2NDQ2NDY4NTg5OTMyMTAyODY1fFBST0RfUENfMTY0NDY0Njg1ODk5MzIxMDI4NjUiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIzODUzODI5MDU0NjczODk3MDMwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiOTM5MTUwNjkwNTg2ODgxNzc5MiIsImltYWdlRG9jaWQiOiIzNjM1OTAzMTQyOTIyMjI3Nzg4IiwiZ3BjaWQiOiIxNjQ0NjQ2ODU4OTkzMjEwMjg2NSIsIm1pZCI6IjU3NjQ2MjQ4MzU5MzczODMzOSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE2NDQ2NDY4NTg5OTMyMTAyODY1fFBST0RfUENfMTY0NDY0Njg1ODk5MzIxMDI4NjUiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiIzODUzODI5MDU0NjczODk3MDMwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiOTM5MTUwNjkwNTg2ODgxNzc5MiIsImltYWdlRG9jaWQiOiIzNjM1OTAzMTQyOTIyMjI3Nzg4IiwiZ3BjaWQiOiIxNjQ0NjQ2ODU4OTkzMjEwMjg2NSIsIm1pZCI6IjU3NjQ2MjQ4MzU5MzczODMzOSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$1.97",
+    "extractedPrice": 1.97,
+    "source": "H-E-B",
+    "reviews": 1400,
+    "rating": 4.6,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/a1c238f8-2017-43e4-b6fe-b46e9c879e8a.jpeg"
+  },
+  {
+    "position": 25,
+    "title": "Kellogg's Raisin Bran Breakfast Cereal",
+    "productId": "7170054774596714076",
+    "productLink": "https://www.google.com/shopping/product/7170054774596714076?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEyMTcxMzk5MTAxNDM3MzMxMzI0fFBST0RfUENfMTIxNzEzOTkxMDE0MzczMzEzMjQiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI3MTcwMDU0Nzc0NTk2NzE0MDc2IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTc0Mjc4MTExNDEwMDg2NjAxOTgiLCJpbWFnZURvY2lkIjoiNTI0MzQwNjc1MDU0NTQ4OTE3NSIsImdwY2lkIjoiMTIxNzEzOTkxMDE0MzczMzEzMjQiLCJtaWQiOiI1NzY0NjI4MDk1NDA2MDg0ODIiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzEyMTcxMzk5MTAxNDM3MzMxMzI0fFBST0RfUENfMTIxNzEzOTkxMDE0MzczMzEzMjQiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI3MTcwMDU0Nzc0NTk2NzE0MDc2IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTc0Mjc4MTExNDEwMDg2NjAxOTgiLCJpbWFnZURvY2lkIjoiNTI0MzQwNjc1MDU0NTQ4OTE3NSIsImdwY2lkIjoiMTIxNzEzOTkxMDE0MzczMzEzMjQiLCJtaWQiOiI1NzY0NjI4MDk1NDA2MDg0ODIiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 2600,
+    "rating": 4.5,
+    "extensions": [
+      "In store, Dallas"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/977823ab-0834-4189-b12e-173299fafcbc.jpeg"
+  },
+  {
+    "position": 26,
+    "title": "Kellogg's Special K Berries and Dark Chocolate Triple Berry Blend Breakfast Cereal",
+    "productId": "2603519059749012646",
+    "productLink": "https://www.google.com/shopping/product/2603519059749012646?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzMzMzc3MDU2NDM3MTU0MjgzMDl8UFJPRF9QQ18zMzM3NzA1NjQzNzE1NDI4MzA5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMjYwMzUxOTA1OTc0OTAxMjY0NiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjQ0NzUxNTAyNjEwMzQ1MDIxODEiLCJpbWFnZURvY2lkIjoiMTE3Njk0MTA4NTU5OTc2NzY4NTgiLCJncGNpZCI6IjMzMzc3MDU2NDM3MTU0MjgzMDkiLCJtaWQiOiI1NzY0NjI0OTc1ODc5Nzg2NjkiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzMzMzc3MDU2NDM3MTU0MjgzMDl8UFJPRF9QQ18zMzM3NzA1NjQzNzE1NDI4MzA5IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMjYwMzUxOTA1OTc0OTAxMjY0NiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjQ0NzUxNTAyNjEwMzQ1MDIxODEiLCJpbWFnZURvY2lkIjoiMTE3Njk0MTA4NTU5OTc2NzY4NTgiLCJncGNpZCI6IjMzMzc3MDU2NDM3MTU0MjgzMDkiLCJtaWQiOiI1NzY0NjI0OTc1ODc5Nzg2NjkiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$7.79",
+    "extractedPrice": 7.79,
+    "source": "Kroger",
+    "reviews": 110,
+    "rating": 4,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/f1330f7e-d3cd-4f24-b177-bc496c9dc635.jpeg"
+  },
+  {
+    "position": 27,
+    "title": "Kellogg's Special K Cereal",
+    "productId": "796367311545425590",
+    "productLink": "https://www.google.com/shopping/product/796367311545425590?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0MTczMTA2MDgxOTcyMjY2MjQyfFBST0RfUENfMTQxNzMxMDYwODE5NzIyNjYyNDIiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI3OTYzNjczMTE1NDU0MjU1OTAiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxNTY5NDc0MzQ0Mzg2MTA1MjU4NyIsImltYWdlRG9jaWQiOiIxMzA1OTMyNzczMTM0NjM4ODc3OCIsImdwY2lkIjoiMTQxNzMxMDYwODE5NzIyNjYyNDIiLCJtaWQiOiI1NzY0NjI4NTUwODAxNjAyMDUiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE0MTczMTA2MDgxOTcyMjY2MjQyfFBST0RfUENfMTQxNzMxMDYwODE5NzIyNjYyNDIiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI3OTYzNjczMTE1NDU0MjU1OTAiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxNTY5NDc0MzQ0Mzg2MTA1MjU4NyIsImltYWdlRG9jaWQiOiIxMzA1OTMyNzczMTM0NjM4ODc3OCIsImdwY2lkIjoiMTQxNzMxMDYwODE5NzIyNjYyNDIiLCJtaWQiOiI1NzY0NjI4NTUwODAxNjAyMDUiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "H-E-B",
+    "reviews": 519,
+    "rating": 4.3,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/f42cea30-9ed5-494f-9f0e-ab46a7e6e759.jpeg"
+  },
+  {
+    "position": 28,
+    "title": "Kellogg's Apple Jacks Cereal",
+    "productId": "7125954896880355883",
+    "productLink": "https://www.google.com/shopping/product/7125954896880355883?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzMxODkxNjA1NzQ5ODg0NDc1NDB8UFJPRF9QQ18zMTg5MTYwNTc0OTg4NDQ3NTQwIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiNzEyNTk1NDg5Njg4MDM1NTg4MyIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExMDcxOTk3MDgyNDU2NjAwMTQ0IiwiaW1hZ2VEb2NpZCI6IjE3MzA1MDk0MTA2MzcxODM2NTE1IiwiZ3BjaWQiOiIzMTg5MTYwNTc0OTg4NDQ3NTQwIiwibWlkIjoiNTc2NDYyNzE4NzQzNzc1MDU1IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzMxODkxNjA1NzQ5ODg0NDc1NDB8UFJPRF9QQ18zMTg5MTYwNTc0OTg4NDQ3NTQwIiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiNzEyNTk1NDg5Njg4MDM1NTg4MyIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExMDcxOTk3MDgyNDU2NjAwMTQ0IiwiaW1hZ2VEb2NpZCI6IjE3MzA1MDk0MTA2MzcxODM2NTE1IiwiZ3BjaWQiOiIzMTg5MTYwNTc0OTg4NDQ3NTQwIiwibWlkIjoiNTc2NDYyNzE4NzQzNzc1MDU1IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$6.86",
+    "extractedPrice": 6.86,
+    "source": "Walmart",
+    "reviews": 1200,
+    "rating": 4.4,
+    "delivery": "Same-day delivery $20",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/dcd32506-80b7-4451-864b-f721b67ff62f.jpeg"
+  },
+  {
+    "position": 29,
+    "title": "Kellogg's Cereal Froot Loops Halloween Wild Berry Cereal Box",
+    "productId": "12708533336677959289",
+    "productLink": "https://www.google.com/shopping/product/12708533336677959289?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzk5NTQ2MjI1MjYzMTQ1ODI5NDV8UFJPRF9QQ185OTU0NjIyNTI2MzE0NTgyOTQ1IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTI3MDg1MzMzMzY2Nzc5NTkyODkiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMzAzOTkwNDE0NjkxMDkyMDkyNiIsImltYWdlRG9jaWQiOiIxNjA1NDgxMjEzODIxMDc2NDgwMyIsImdwY2lkIjoiOTk1NDYyMjUyNjMxNDU4Mjk0NSIsIm1pZCI6IjU3NjQ2Mjg0NTQ1Mjg2MTE5MyIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzk5NTQ2MjI1MjYzMTQ1ODI5NDV8UFJPRF9QQ185OTU0NjIyNTI2MzE0NTgyOTQ1IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTI3MDg1MzMzMzY2Nzc5NTkyODkiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMzAzOTkwNDE0NjkxMDkyMDkyNiIsImltYWdlRG9jaWQiOiIxNjA1NDgxMjEzODIxMDc2NDgwMyIsImdwY2lkIjoiOTk1NDYyMjUyNjMxNDU4Mjk0NSIsIm1pZCI6IjU3NjQ2Mjg0NTQ1Mjg2MTE5MyIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.69",
+    "extractedPrice": 4.69,
+    "source": "Target",
+    "reviews": 2,
+    "rating": 1,
+    "delivery": "Same-day delivery",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/2fa19214-12fc-4b92-a732-6cff48ddbeb2.jpeg"
+  },
+  {
+    "position": 30,
+    "title": "Kellogg's Special K Protein Breakfast Cereal",
+    "productId": "3449392159568917123",
+    "productLink": "https://www.google.com/shopping/product/3449392159568917123?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzc4NjY4MDE1MTc2MTAyNzg5MnxQUk9EX1BDXzc4NjY4MDE1MTc2MTAyNzg5MiIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjM0NDkzOTIxNTk1Njg5MTcxMjMiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMzYxMTU2MDU0Mzc1MTE0Mzk1NCIsImltYWdlRG9jaWQiOiIxNTEyMTA5ODU0NzY5NDU4NjQwNyIsImdwY2lkIjoiNzg2NjgwMTUxNzYxMDI3ODkyIiwibWlkIjoiNTc2NDYyODY5NTExOTAxMTE4IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzc4NjY4MDE1MTc2MTAyNzg5MnxQUk9EX1BDXzc4NjY4MDE1MTc2MTAyNzg5MiIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjM0NDkzOTIxNTk1Njg5MTcxMjMiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMzYxMTU2MDU0Mzc1MTE0Mzk1NCIsImltYWdlRG9jaWQiOiIxNTEyMTA5ODU0NzY5NDU4NjQwNyIsImdwY2lkIjoiNzg2NjgwMTUxNzYxMDI3ODkyIiwibWlkIjoiNTc2NDYyODY5NTExOTAxMTE4IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "H-E-B",
+    "reviews": 66,
+    "rating": 3.7,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/9758fec8-c16b-48b6-bf71-9af8dd5ab878.jpeg"
+  },
+  {
+    "position": 31,
+    "title": "Kellogg's Froot Loops Marshmallow Family Size Cereal",
+    "productId": "17443845634377182319",
+    "productLink": "https://www.google.com/shopping/product/17443845634377182319?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzU4MTA5MjczNjE2OTI1NjI4MTh8UFJPRF9QQ181ODEwOTI3MzYxNjkyNTYyODE4IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTc0NDM4NDU2MzQzNzcxODIzMTkiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMjczMTk1MTM3MDg1MjY4NzYxOSIsImltYWdlRG9jaWQiOiIxNDI1MTg5MTU3NDI0NDExODA0NyIsImdwY2lkIjoiNTgxMDkyNzM2MTY5MjU2MjgxOCIsIm1pZCI6IjU3NjQ2Mjg2MTg4NjQyMDk0MSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzU4MTA5MjczNjE2OTI1NjI4MTh8UFJPRF9QQ181ODEwOTI3MzYxNjkyNTYyODE4IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTc0NDM4NDU2MzQzNzcxODIzMTkiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMjczMTk1MTM3MDg1MjY4NzYxOSIsImltYWdlRG9jaWQiOiIxNDI1MTg5MTU3NDI0NDExODA0NyIsImdwY2lkIjoiNTgxMDkyNzM2MTY5MjU2MjgxOCIsIm1pZCI6IjU3NjQ2Mjg2MTg4NjQyMDk0MSIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 75,
+    "rating": 4.7,
+    "extensions": [
+      "In store, Allen"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/d52510e0-aea6-410f-a7a0-bab132806f44.jpeg"
+  },
+  {
+    "position": 32,
+    "title": "Kellogg's Giant Size Fruit Loops with Marshmallows",
+    "productId": "13565537224456264394",
+    "productLink": "https://www.google.com/shopping/product/13565537224456264394?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IiIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjEzNTY1NTM3MjI0NDU2MjY0Mzk0IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNjg0OTE1MDE1OTkzMjYzNzIxOCIsImltYWdlRG9jaWQiOiIxMzY1MzEzNTEzMDA1Njk0NjY5NSIsImdwY2lkIjoiMTM0OTg3NjM1NDI1MjgwMzI2NDIiLCJtaWQiOiI1NzY0NjI4MjkxNTc2NDM4NDIiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IiIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjEzNTY1NTM3MjI0NDU2MjY0Mzk0IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNjg0OTE1MDE1OTkzMjYzNzIxOCIsImltYWdlRG9jaWQiOiIxMzY1MzEzNTEzMDA1Njk0NjY5NSIsImdwY2lkIjoiMTM0OTg3NjM1NDI1MjgwMzI2NDIiLCJtaWQiOiI1NzY0NjI4MjkxNTc2NDM4NDIiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$6.99",
+    "extractedPrice": 6.99,
+    "source": "Kroger",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/9b3d9c8a-b1fe-42b0-9abf-d82b2a515692.jpeg"
+  },
+  {
+    "position": 33,
+    "title": "Kellogg's Cereal Cups Family Variety Pack",
+    "productId": "1516178235749892723",
+    "productLink": "https://www.google.com/shopping/product/1516178235749892723?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzg1NTUxMjIzODgxNDA3NDE3NDR8UFJPRF9QQ184NTU1MTIyMzg4MTQwNzQxNzQ0IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTUxNjE3ODIzNTc0OTg5MjcyMyIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExNDE0MDkzNDk3NjgxOTgwMzAwIiwiaW1hZ2VEb2NpZCI6IjExNDkwNjY3MDY4MTU3NTQ4MTM0IiwiZ3BjaWQiOiI4NTU1MTIyMzg4MTQwNzQxNzQ0IiwibWlkIjoiNTc2NDYyNzA0NDgxMDU5Nzk3IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzg1NTUxMjIzODgxNDA3NDE3NDR8UFJPRF9QQ184NTU1MTIyMzg4MTQwNzQxNzQ0IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTUxNjE3ODIzNTc0OTg5MjcyMyIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6IjExNDE0MDkzNDk3NjgxOTgwMzAwIiwiaW1hZ2VEb2NpZCI6IjExNDkwNjY3MDY4MTU3NTQ4MTM0IiwiZ3BjaWQiOiI4NTU1MTIyMzg4MTQwNzQxNzQ0IiwibWlkIjoiNTc2NDYyNzA0NDgxMDU5Nzk3IiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$12.98",
+    "extractedPrice": 12.98,
+    "source": "H-E-B",
+    "reviews": 4,
+    "rating": 4.8,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/5be43a02-286d-44d9-84d7-44a63b2ff022.jpeg"
+  },
+  {
+    "position": 34,
+    "title": "Kellogg's Rice Krispy Breakfast Cereal Mega Size Original 25.2 oz Box",
+    "productId": "12583757135681327560",
+    "productLink": "https://www.google.com/shopping/product/12583757135681327560?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzU4MDY2ODQwNzczNzkyNDAwNzd8UFJPRF9QQ181ODA2Njg0MDc3Mzc5MjQwMDc3IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTI1ODM3NTcxMzU2ODEzMjc1NjAiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMTM2MjM2MDc3MDIxNTE1NDg1MiIsImltYWdlRG9jaWQiOiIxMTc1OTA0NDM0OTA5NDMyNjkyNCIsImdwY2lkIjoiNTgwNjY4NDA3NzM3OTI0MDA3NyIsIm1pZCI6IjU3NjQ2Mjg0NTcxNzYwNTA3MiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzU4MDY2ODQwNzczNzkyNDAwNzd8UFJPRF9QQ181ODA2Njg0MDc3Mzc5MjQwMDc3IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMTI1ODM3NTcxMzU2ODEzMjc1NjAiLCJoZWFkbGluZU9mZmVyRG9jaWQiOiIxMTM2MjM2MDc3MDIxNTE1NDg1MiIsImltYWdlRG9jaWQiOiIxMTc1OTA0NDM0OTA5NDMyNjkyNCIsImdwY2lkIjoiNTgwNjY4NDA3NzM3OTI0MDA3NyIsIm1pZCI6IjU3NjQ2Mjg0NTcxNzYwNTA3MiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$5.64",
+    "extractedPrice": 5.64,
+    "source": "Walmart",
+    "reviews": 82,
+    "rating": 4.5,
+    "delivery": "Same-day delivery $20",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/7a3dfe08-1011-4404-9510-7ea1b2d14ca6.jpeg"
+  },
+  {
+    "position": 35,
+    "title": "Kellogg's Frosted Mini-Wheats Pumpkin Spice Breakfast Cereal",
+    "productId": "8887742989955790776",
+    "productLink": "https://www.google.com/shopping/product/8887742989955790776?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE2ODYzMDg1Nzg1NDM0MTE0Njg0fFBST0RfUENfMTY4NjMwODU3ODU0MzQxMTQ2ODQiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI4ODg3NzQyOTg5OTU1NzkwNzc2IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiOTc4NTIwODA1MzY4MTkxOTU3MCIsImltYWdlRG9jaWQiOiIyMDA4MzAwMDE5NjU5MjE5OTkiLCJncGNpZCI6IjE2ODYzMDg1Nzg1NDM0MTE0Njg0IiwibWlkIjoiIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE2ODYzMDg1Nzg1NDM0MTE0Njg0fFBST0RfUENfMTY4NjMwODU3ODU0MzQxMTQ2ODQiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI4ODg3NzQyOTg5OTU1NzkwNzc2IiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiOTc4NTIwODA1MzY4MTkxOTU3MCIsImltYWdlRG9jaWQiOiIyMDA4MzAwMDE5NjU5MjE5OTkiLCJncGNpZCI6IjE2ODYzMDg1Nzg1NDM0MTE0Njg0IiwibWlkIjoiIiwicSI6IktlbGxvZ2dzIGNlcmVhbCBuZWFyIFBsYW5vLKBUZXhhcyIsImhsIjoiZW4iLCJnbCI6InVzIn0",
+    "price": "$4.69",
+    "extractedPrice": 4.69,
+    "source": "Target",
+    "reviews": 122,
+    "rating": 4.6,
+    "delivery": "Same-day delivery",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/9d999511-bd8b-4400-a76b-f192107ea0f0.jpeg"
+  },
+  {
+    "position": 36,
+    "title": "Kellogg's Frosted Flakes Mega Size Breakfast Cereal",
+    "productId": "3698173437588962062",
+    "productLink": "https://www.google.com/shopping/product/3698173437588962062?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzI4MzQ3NjcxNjAyMTc0ODAyODZ8UFJPRF9QQ18yODM0NzY3MTYwMjE3NDgwMjg2IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMzY5ODE3MzQzNzU4ODk2MjA2MiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6Ijg1MTY3Njg5MDc0ODI1NTU0NTYiLCJpbWFnZURvY2lkIjoiOTYzNTE2MTIyNTU0MDgzMzc2MyIsImdwY2lkIjoiMjgzNDc2NzE2MDIxNzQ4MDI4NiIsIm1pZCI6IiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzI4MzQ3NjcxNjAyMTc0ODAyODZ8UFJPRF9QQ18yODM0NzY3MTYwMjE3NDgwMjg2IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMzY5ODE3MzQzNzU4ODk2MjA2MiIsImhlYWRsaW5lT2ZmZXJEb2NpZCI6Ijg1MTY3Njg5MDc0ODI1NTU0NTYiLCJpbWFnZURvY2lkIjoiOTYzNTE2MTIyNTU0MDgzMzc2MyIsImdwY2lkIjoiMjgzNDc2NzE2MDIxNzQ4MDI4NiIsIm1pZCI6IiIsInEiOiJLZWxsb2dncyBjZXJlYWwgbmVhciBQbGFubyygVGV4YXMiLCJobCI6ImVuIiwiZ2wiOiJ1cyJ9",
+    "price": "$5.64",
+    "extractedPrice": 5.64,
+    "source": "H-E-B",
+    "reviews": 59,
+    "rating": 3.9,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/a3a14080-5879-4a5b-b172-833f5d6fd87f.jpeg"
+  },
+  {
+    "position": 37,
+    "title": "Kellogg's Special K Breakfast Cereal",
+    "productId": "6759893478241368340",
+    "productLink": "https://www.google.com/shopping/product/6759893478241368340?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE4MTU3MTk3NjAwNzUwMzg5MzE4fFBST0RfUENfMTgxNTcxOTc2MDA3NTAzODkzMTgiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI2NzU5ODkzNDc4MjQxMzY4MzQwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNTEyMTExODY3OTM4ODYwOTgxMyIsImltYWdlRG9jaWQiOiIxNjczNTM1MDAyOTkwMjk5NzcyMyIsImdwY2lkIjoiMTgxNTcxOTc2MDA3NTAzODkzMTgiLCJtaWQiOiI1NzY0NjI4NjY5ODU0MDQ2NDciLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzE4MTU3MTk3NjAwNzUwMzg5MzE4fFBST0RfUENfMTgxNTcxOTc2MDA3NTAzODkzMTgiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI2NzU5ODkzNDc4MjQxMzY4MzQwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNTEyMTExODY3OTM4ODYwOTgxMyIsImltYWdlRG9jaWQiOiIxNjczNTM1MDAyOTkwMjk5NzcyMyIsImdwY2lkIjoiMTgxNTcxOTc2MDA3NTAzODkzMTgiLCJtaWQiOiI1NzY0NjI4NjY5ODU0MDQ2NDciLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "Walmart",
+    "reviews": 11,
+    "rating": 3.1,
+    "delivery": "Same-day delivery $20",
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/4cfed8cb-e279-480c-8ae6-2a7b8ce52f75.jpeg"
+  },
+  {
+    "position": 38,
+    "title": "Kellogg's Froot Loops Breakfast Cereal",
+    "productId": "16947395277755442173",
+    "productLink": "https://www.google.com/shopping/product/16947395277755442173?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzk2MDI3MTU1NDYxNTMxODUwM3xQUk9EX1BDXzk2MDI3MTU1NDYxNTMxODUwMyIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjE2OTQ3Mzk1Mjc3NzU1NDQyMTczIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNDY3NzY5ODE4MjQ1MTMyMzI5MSIsImltYWdlRG9jaWQiOiI3MjU2ODY5MDAwOTQ3MjA0MTcxIiwiZ3BjaWQiOiI5NjAyNzE1NTQ2MTUzMTg1MDMiLCJtaWQiOiIiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzk2MDI3MTU1NDYxNTMxODUwM3xQUk9EX1BDXzk2MDI3MTU1NDYxNTMxODUwMyIsInB2dCI6ImhnIiwiZWkiOiJxWGtDYWRDZ01kT3g1Tm9QbnFMUHNBYyIsImNhdGFsb2dpZCI6IjE2OTQ3Mzk1Mjc3NzU1NDQyMTczIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiNDY3NzY5ODE4MjQ1MTMyMzI5MSIsImltYWdlRG9jaWQiOiI3MjU2ODY5MDAwOTQ3MjA0MTcxIiwiZ3BjaWQiOiI5NjAyNzE1NTQ2MTUzMTg1MDMiLCJtaWQiOiIiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.49",
+    "extractedPrice": 4.49,
+    "source": "Kroger",
+    "reviews": 94,
+    "rating": 4.6,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/0cddf6bf-940b-416a-9670-1dff9c831193.jpeg"
+  },
+  {
+    "position": 39,
+    "title": "Kellogg's Cereal Assortment Pack",
+    "productId": "352336273432136950",
+    "productLink": "https://www.google.com/shopping/product/352336273432136950?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzI5MzkwOTUzMjA5NjE3NjI3MDZ8UFJPRF9QQ18yOTM5MDk1MzIwOTYxNzYyNzA2IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMzUyMzM2MjczNDMyMTM2OTUwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTA5NzY5NTUyOTg4NjYwMDY5MjYiLCJpbWFnZURvY2lkIjoiMTY1NjQwOTY3MTAxOTc3NDUxNzMiLCJncGNpZCI6IjI5MzkwOTUzMjA5NjE3NjI3MDYiLCJtaWQiOiI1NzY0NjI0NjExMTU4NzU4NjkiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzI5MzkwOTUzMjA5NjE3NjI3MDZ8UFJPRF9QQ18yOTM5MDk1MzIwOTYxNzYyNzA2IiwicHZ0IjoiaGciLCJlaSI6InFYa0NhZENnTWRPeDVOb1BucUxQc0FjIiwiY2F0YWxvZ2lkIjoiMzUyMzM2MjczNDMyMTM2OTUwIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTA5NzY5NTUyOTg4NjYwMDY5MjYiLCJpbWFnZURvY2lkIjoiMTY1NjQwOTY3MTAxOTc3NDUxNzMiLCJncGNpZCI6IjI5MzkwOTUzMjA5NjE3NjI3MDYiLCJtaWQiOiI1NzY0NjI0NjExMTU4NzU4NjkiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$14.49",
+    "extractedPrice": 14.49,
+    "source": "BJ's Wholesale Club",
+    "reviews": 386,
+    "rating": 4.7,
+    "extensions": [
+      "Also nearby"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/c144416e-2f9c-4799-8bc2-0490f3a03f51.jpeg"
+  },
+  {
+    "position": 40,
+    "title": "Kellogg's Frosted Flakes Cereal Strawberry Milkshake",
+    "productId": "7403469909035553763",
+    "productLink": "https://www.google.com/shopping/product/7403469909035553763?gl=us",
+    "immersiveProductPageToken": "eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzExNDQyMTM5NDE5MzEzODQzMDg5fFBST0RfUENfMTE0NDIxMzk0MTkzMTM4NDMwODkiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI3NDAzNDY5OTA5MDM1NTUzNzYzIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTcwODU0MTMxMTg1NTIxODY5MzciLCJpbWFnZURvY2lkIjoiMTg0MDIzMDY2MTA0NDY3MzIzOCIsImdwY2lkIjoiMTE0NDIxMzk0MTkzMTM4NDMwODkiLCJtaWQiOiI1NzY0NjI4NTUwNTg3NDE1MDQiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "hasdataLink": "https://api.hasdata.com/scrape/google/immersive-product?pageToken=eyJhbGciOiJIUzI1NiIsInJkcyI6IlBDXzExNDQyMTM5NDE5MzEzODQzMDg5fFBST0RfUENfMTE0NDIxMzk0MTkzMTM4NDMwODkiLCJwdnQiOiJoZyIsImVpIjoicVhrQ2FkQ2dNZE94NU5vUG5xTFBzQWMiLCJjYXRhbG9naWQiOiI3NDAzNDY5OTA5MDM1NTUzNzYzIiwiaGVhZGxpbmVPZmZlckRvY2lkIjoiMTcwODU0MTMxMTg1NTIxODY5MzciLCJpbWFnZURvY2lkIjoiMTg0MDIzMDY2MTA0NDY3MzIzOCIsImdwY2lkIjoiMTE0NDIxMzk0MTkzMTM4NDMwODkiLCJtaWQiOiI1NzY0NjI4NTUwNTg3NDE1MDQiLCJxIjoiS2VsbG9nZ3MgY2VyZWFsIG5lYXIgUGxhbm8soFRleGFzIiwiaGwiOiJlbiIsImdsIjoidXMifQ",
+    "price": "$4.98",
+    "extractedPrice": 4.98,
+    "source": "H-E-B",
+    "reviews": 151,
+    "rating": 4,
+    "extensions": [
+      "In store, Plano"
+    ],
+    "thumbnail": "https://f005.backblazeb2.com/file/hasdata-screenshots/26cf4bcb-be1c-4514-bc62-ca80feae55ef.jpeg"
+  }
+]
