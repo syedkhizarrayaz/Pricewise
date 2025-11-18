@@ -126,11 +126,12 @@ class DatabaseService {
 
     try {
       // Check if location already exists
+      if (!this.pool) throw new Error('Database pool is not initialized');
       const [existing] = await this.pool.execute(
         `SELECT id FROM user_locations 
-         WHERE address = ? AND zip_code = ? 
-         AND (latitude IS NULL AND ? IS NULL OR latitude = ?)
-         AND (longitude IS NULL AND ? IS NULL OR longitude = ?)
+         WHERE address = ? AND zip_code = ?
+         AND ((latitude IS NULL AND ? IS NULL) OR latitude = ?)
+         AND ((longitude IS NULL AND ? IS NULL) OR longitude = ?)
          LIMIT 1`,
         [
           location.address,
@@ -183,6 +184,9 @@ class DatabaseService {
     }
 
     try {
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const [result] = await this.pool.execute(
         `INSERT INTO user_queries (location_id, items, items_text, query_hash)
          VALUES (?, ?, ?, ?)`,
@@ -216,6 +220,9 @@ class DatabaseService {
 
       // Prepare batch insert
       const values = stores.map(store => [queryId, store]);
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const placeholders = stores.map(() => '(?, ?)').join(', ');
 
       await this.pool.execute(
@@ -251,6 +258,9 @@ class DatabaseService {
         r.exactMatch
       ]);
 
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const placeholders = results.map(() => '(?, ?, ?, ?, ?, ?)').join(', ');
 
       await this.pool.execute(
@@ -277,6 +287,9 @@ class DatabaseService {
     }
 
     try {
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       await this.pool.execute(
         `INSERT INTO query_cache 
          (query_hash, cached_result, nearby_stores, hasdata_results, expires_at)
@@ -311,6 +324,9 @@ class DatabaseService {
     }
 
     try {
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const [rows] = await this.pool.execute(
         `SELECT cached_result, nearby_stores, hasdata_results
          FROM query_cache
@@ -349,6 +365,9 @@ class DatabaseService {
     }
 
     try {
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const [result] = await this.pool.execute(
         `DELETE FROM query_cache WHERE expires_at <= NOW()`
       );
@@ -403,6 +422,9 @@ class DatabaseService {
       
       query += ' GROUP BY DATE(q.created_at), l.location_source ORDER BY query_date DESC';
       
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const [rows] = await this.pool.execute(query, params);
       return rows as any[];
     } catch (error: any) {
@@ -420,6 +442,9 @@ class DatabaseService {
     }
 
     try {
+      if (!this.pool) {
+        throw new Error("Database pool has not been initialized.");
+      }
       const [rows] = await this.pool.execute(
         `SELECT 
           q.id,
