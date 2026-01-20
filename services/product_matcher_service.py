@@ -1247,11 +1247,11 @@ if __name__ == "__main__":
     query = "whole milk 1 gallon"
     result = select_best_product(query, example_results)
     
-    print("Selected product:")
-    print(result["selected"])
-    print(f"Score: {result['score']:.3f}")
-    print(f"Confidence OK: {result['confidence_ok']}")
-    print(f"Reason: {result['reason']}")
+    logger.info("Selected product:")
+    logger.info(result["selected"])
+    logger.info(f"Score: {result['score']:.3f}")
+    logger.info(f"Confidence OK: {result['confidence_ok']}")
+    logger.info(f"Reason: {result['reason']}")
     
     # Run the FastAPI server
     uvicorn.run(app, host="0.0.0.0", port=8000)

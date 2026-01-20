@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import * as Location from 'expo-location';
 import { Platform } from 'react-native';
 import { Location as LocationType } from '@/types';
+import { getApiConfig } from '@/config/api';
 
 
 export function useLocation() {
@@ -97,6 +98,59 @@ export function useLocation() {
         console.warn('Failed to get address details from Expo:', geocodeError);
       }
 
+      // If Expo didn't return a zip code, try Google Geocoding API as fallback
+      if (!locationDetails?.results?.[0]?.address_components?.find((c: any) => c.types?.includes('postal_code'))?.long_name) {
+        try {
+          console.log('🔍 [Location] Expo did not return zip code, trying Google Geocoding API...');
+          const apiConfig = getApiConfig();
+          const googleApiKey = apiConfig.GOOGLE_PLACES_API_KEY;
+          
+          if (googleApiKey) {
+            const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${googleApiKey}`;
+            const response = await fetch(geocodeUrl);
+            const geocodeData = await response.json();
+            
+            if (geocodeData.status === 'OK' && geocodeData.results && geocodeData.results.length > 0) {
+              const result = geocodeData.results[0];
+              console.log('✅ [Location] Google Geocoding API returned address data');
+              
+              // Use Google's data if we don't have Expo's data, or merge if we do
+              if (!locationDetails) {
+                locationDetails = { results: [result] };
+              } else {
+                // Merge Google's address components with Expo's, prioritizing Google's zip code
+                const googleZipCode = result.address_components?.find(
+                  (c: any) => c.types?.includes('postal_code')
+                );
+                
+                if (googleZipCode) {
+                  // Update or add zip code to existing location details
+                  const existingComponents = locationDetails.results[0].address_components || [];
+                  const zipCodeIndex = existingComponents.findIndex(
+                    (c: any) => c.types?.includes('postal_code')
+                  );
+                  
+                  if (zipCodeIndex >= 0) {
+                    existingComponents[zipCodeIndex] = googleZipCode;
+                  } else {
+                    existingComponents.push(googleZipCode);
+                  }
+                  
+                  locationDetails.results[0].address_components = existingComponents;
+                  console.log(`✅ [Location] Added zip code from Google: ${googleZipCode.long_name}`);
+                }
+              }
+            } else {
+              console.warn('⚠️ [Location] Google Geocoding API returned no results:', geocodeData.status);
+            }
+          } else {
+            console.warn('⚠️ [Location] Google Places API key not configured');
+          }
+        } catch (googleGeocodeError) {
+          console.warn('⚠️ [Location] Google Geocoding API fallback failed:', googleGeocodeError);
+        }
+      }
+
       // Extract location data
       const locationData: LocationType = {
         latitude: position.coords.latitude,
@@ -174,7 +228,30 @@ export function useLocation() {
   };
 
   const extractAddress = (locationDetails: any): string | undefined => {
-    return locationDetails?.results?.[0]?.formatted_address;
+    if (!locationDetails?.results?.[0]) return undefined;
+    
+    // Extract components
+    const city = extractCity(locationDetails);
+    const state = extractState(locationDetails);
+    const zipCode = extractZipCode(locationDetails);
+    const country = extractCountry(locationDetails);
+    
+    // Format as "City, State ZIP, Country" (e.g., "Plano, TX 75023, USA")
+    const parts: string[] = [];
+    
+    if (city) parts.push(city);
+    if (state) {
+      // Add zip code to state if available
+      if (zipCode) {
+        parts.push(`${state} ${zipCode}`);
+      } else {
+        parts.push(state);
+      }
+    }
+    if (country) parts.push(country);
+    
+    // Return formatted address or undefined if no valid parts
+    return parts.length > 0 ? parts.join(', ') : undefined;
   };
 
   // Auto-request location on mount for both web and mobile

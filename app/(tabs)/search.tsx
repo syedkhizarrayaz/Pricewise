@@ -379,8 +379,32 @@ export default function SearchScreen() {
       return;
     }
 
-    const locationToUse = showManualLocation ? manualLocation : `${location?.city}, ${location?.state}`;
-    const zipCodeToUse = showManualLocation ? manualZipCode : location?.zipCode;
+    // Format GPS location as "City, State ZIP, Country" (e.g., "Plano, TX 75023, USA")
+    let locationToUse: string;
+    let zipCodeToUse: string;
+    
+    if (showManualLocation) {
+      locationToUse = manualLocation;
+      zipCodeToUse = manualZipCode;
+    } else if (location) {
+      // Format GPS location properly
+      const parts: string[] = [];
+      if (location.city) parts.push(location.city);
+      if (location.state) {
+        if (location.zipCode) {
+          parts.push(`${location.state} ${location.zipCode}`);
+        } else {
+          parts.push(location.state);
+        }
+      }
+      if (location.country) parts.push(location.country);
+      
+      locationToUse = parts.length > 0 ? parts.join(', ') : location.address || '';
+      zipCodeToUse = location.zipCode || '';
+    } else {
+      locationToUse = '';
+      zipCodeToUse = '';
+    }
 
     if (!locationToUse) {
       Alert.alert('Error', 'Please provide a valid location');

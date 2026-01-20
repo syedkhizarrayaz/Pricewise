@@ -3,45 +3,23 @@
 
 export const API_CONFIG = {
   // Backend API URL
-  // ⚠️ IMPORTANT FOR MOBILE/EMULATOR: localhost won't work!
-  // 
-  // How to find your machine's IP address:
-  //   Windows: ipconfig | findstr IPv4
-  //   Mac/Linux: ifconfig | grep "inet " | grep -v 127.0.0.1
-  //
-  // For different platforms:
-  //   - Web: 'http://localhost:3001' works fine
-  //   - iOS Simulator: 'http://localhost:3001' usually works
-  //   - Android Emulator: Use 'http://10.0.2.2:3001' (special alias for host)
-  //   - Physical Devices: Use your machine's IP, e.g., 'http://192.168.1.9:3001'
-  //
-  // Example: 'http://192.168.1.9:3001' (replace with your actual IP)
-  BACKEND_URL: process.env.EXPO_PUBLIC_BACKEND_URL || 'http://192.168.1.8:3001',
+  // Production server: 104.248.75.168
+  // Can be overridden with EXPO_PUBLIC_BACKEND_URL environment variable
+  BACKEND_URL: process.env.EXPO_PUBLIC_BACKEND_URL || 'http://104.248.75.168:3001',
   
   // Python Service URL
-  // ⚠️ IMPORTANT FOR MOBILE/EMULATOR: localhost won't work!
-  //
-  // How to find your machine's IP address:
-  //   Windows: ipconfig | findstr IPv4
-  //   Mac/Linux: ifconfig | grep "inet " | grep -v 127.0.0.1
-  //
-  // For different platforms:
-  //   - Web: 'http://localhost:8000' works fine
-  //   - iOS Simulator: 'http://localhost:8000' usually works
-  //   - Android Emulator: Use 'http://10.0.2.2:8000' (special alias for host)
-  //   - Physical Devices: Use your machine's IP, e.g., 'http://192.168.1.9:8000'
-  //
-  // Example: 'http://192.168.1.9:8000' (replace with your actual IP)
-  PYTHON_SERVICE_URL: process.env.EXPO_PUBLIC_PYTHON_SERVICE_URL || 'http://192.168.1.8:8000',
+  // Production server: 104.248.75.168
+  // Can be overridden with EXPO_PUBLIC_PYTHON_SERVICE_URL environment variable
+  PYTHON_SERVICE_URL: process.env.EXPO_PUBLIC_PYTHON_SERVICE_URL || 'http://104.248.75.168:8000',
   
   // Unwrangle API for product search and details
   UNWRANGLE_API_KEY: process.env.UNWRANGLE_API_KEY,
   
   // OpenAI API for store discovery and location analysis
-  OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+  OPENAI_API_KEY: process.env.OPENAI_API_KEY || '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',
   
   // Google Places API for store discovery
-  GOOGLE_PLACES_API_KEY: process.env.GOOGLE_PLACES_API_KEY, // You'll need to add your Google Places API key
+  GOOGLE_PLACES_API_KEY: process.env.GOOGLE_PLACES_API_KEY || 'AIzaSyD8dkXiyOx4XoVIF4hosNG91h47zgPnsQY', // You'll need to add your Google Places API key
   
   // Search configuration
   SEARCH_CONFIG: {
