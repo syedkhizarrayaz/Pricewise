@@ -18,8 +18,10 @@
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Pricewise needs your location to find the best grocery deals nearby",
         "NSCameraUsageDescription": "Pricewise needs camera access to scan your grocery lists",
-        "NSPhotoLibraryUsageDescription": "Pricewise needs photo access to upload your grocery lists"
-      }
+        "NSPhotoLibraryUsageDescription": "Pricewise needs photo access to upload your grocery lists",
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "bundleIdentifier": "com.pricewise.app"
     },
     "android": {
       "package": "com.pricewise.app",
@@ -30,8 +32,6 @@
         "android.permission.CAMERA",
         "android.permission.READ_EXTERNAL_STORAGE",
         "android.permission.INTERNET",
-        "android.permission.ACCESS_COARSE_LOCATION",
-        "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.RECORD_AUDIO"
       ],
       "adaptiveIcon": {
