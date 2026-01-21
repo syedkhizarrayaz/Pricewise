@@ -3,13 +3,28 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
 import { groceryPriceRouter } from './routes/groceryPrice';
 import { healthRouter } from './routes/health';
 import { analyticsRouter } from './routes/analytics';
 import { databaseService } from './services/databaseService';
 
-// Load environment variables
-dotenv.config();
+// Load environment variables from root .env file
+// Try root .env first, then fallback to backend/.env if it exists
+const rootEnvPath = path.resolve(__dirname, '../../../.env');
+const backendEnvPath = path.resolve(__dirname, '../.env');
+
+if (fs.existsSync(rootEnvPath)) {
+  dotenv.config({ path: rootEnvPath });
+  console.log('✅ Loaded .env from project root');
+} else if (fs.existsSync(backendEnvPath)) {
+  dotenv.config({ path: backendEnvPath });
+  console.log('✅ Loaded .env from backend directory');
+} else {
+  dotenv.config(); // Try default locations
+  console.log('⚠️ No .env file found, using system environment variables');
+}
 
 const app: Express = express();
 const PORT = process.env.PORT || 3001;

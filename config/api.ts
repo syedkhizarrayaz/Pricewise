@@ -1,5 +1,5 @@
 // API Configuration
-// Replace these with your actual API keys
+// All API keys are loaded from .env file at project root
 
 export const API_CONFIG = {
   // Backend API URL
@@ -12,14 +12,9 @@ export const API_CONFIG = {
   // Can be overridden with EXPO_PUBLIC_PYTHON_SERVICE_URL environment variable
   PYTHON_SERVICE_URL: process.env.EXPO_PUBLIC_PYTHON_SERVICE_URL || 'http://104.248.75.168:8000',
   
-  // Unwrangle API for product search and details
-  UNWRANGLE_API_KEY: process.env.UNWRANGLE_API_KEY,
-  
-  // OpenAI API for store discovery and location analysis
-  OPENAI_API_KEY: process.env.OPENAI_API_KEY || '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',
-  
-  // Google Places API for store discovery
-  GOOGLE_PLACES_API_KEY: process.env.GOOGLE_PLACES_API_KEY || 'AIzaSyD8dkXiyOx4XoVIF4hosNG91h47zgPnsQY', // You'll need to add your Google Places API key
+  // API keys are NOT accessible from frontend for security
+  // All API calls go through backend
+  // Frontend only needs backend URL
   
   // Search configuration
   SEARCH_CONFIG: {
@@ -55,19 +50,9 @@ export const validateApiKeys = () => {
   const config = getApiConfig();
   const missingKeys = [];
   
-  if (!config.UNWRANGLE_API_KEY || config.UNWRANGLE_API_KEY === 'your-unwrangle-api-key') {
-    missingKeys.push('UNWRANGLE_API_KEY');
-  }
-  
-  if (!config.OPENAI_API_KEY || config.OPENAI_API_KEY === 'your-openai-api-key') {
-    missingKeys.push('OPENAI_API_KEY');
-  }
-  
-  if (missingKeys.length > 0) {
-    console.warn('Missing API keys:', missingKeys.join(', '));
-    console.warn('Please update the API keys in config/api.ts');
-    return false;
-  }
+  // API key validation removed - keys are backend-only
+  // Frontend doesn't need API keys, only backend URL
+  return true;
   
   return true;
 };

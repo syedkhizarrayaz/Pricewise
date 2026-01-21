@@ -65,21 +65,24 @@ logger = logging.getLogger(__name__)
 # Try to load .env file if python-dotenv is available (after logger is set up)
 try:
     from dotenv import load_dotenv
-    # Load .env from current directory (services/) and parent directory (workspace root)
+    # Load .env from workspace root first (prioritized), then fallback to services/.env
     current_dir = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_dir)
-    # Try loading from services/.env first, then from workspace root/.env
-    env_loaded = False
-    services_env = os.path.join(current_dir, '.env')
     root_env = os.path.join(parent_dir, '.env')
+    services_env = os.path.join(current_dir, '.env')
     
-    if os.path.exists(services_env):
+    env_loaded = False
+    
+    # Prioritize root .env file (single source of truth)
+    if os.path.exists(root_env):
+        load_dotenv(root_env)
+        logger.info(f"✅ Loaded .env from workspace root: {root_env}")
+        env_loaded = True
+    elif os.path.exists(services_env):
+        # Fallback to services/.env if root .env doesn't exist
         load_dotenv(services_env)
         logger.info(f"✅ Loaded .env from services directory: {services_env}")
-        env_loaded = True
-    if os.path.exists(root_env):
-        load_dotenv(root_env, override=False)  # Don't override if already loaded
-        logger.info(f"✅ Loaded .env from workspace root: {root_env}")
+        logger.warning("💡 Consider moving .env to project root for centralized configuration")
         env_loaded = True
     
     if env_loaded:
@@ -90,7 +93,8 @@ try:
         else:
             logger.warning("⚠️ OPENAI_API_KEY not found in .env file(s)")
     else:
-        logger.info("ℹ️ No .env file found (checked services/ and workspace root/)")
+        logger.info("ℹ️ No .env file found (checked workspace root/ and services/)")
+        logger.info("💡 Create a .env file at the project root with your API keys")
 except ImportError:
     # python-dotenv not installed, skip .env loading
     logger.warning("💡 Install python-dotenv to load .env files: pip install python-dotenv")

@@ -37,8 +37,14 @@ export interface HasDataResponse {
 }
 
 export class HasDataService {
-  private readonly API_KEY = process.env.HASDATA_API_KEY || '9e03138f-d924-4e01-bc1a-91f57cd12543';
+  private readonly API_KEY = process.env.HASDATA_API_KEY || '';
   private readonly BASE_URL = 'https://api.hasdata.com/scrape/google/shopping';
+  
+  constructor() {
+    if (!this.API_KEY) {
+      console.warn('⚠️ [HasData] HASDATA_API_KEY not found in environment variables. Please set it in the .env file at project root.');
+    }
+  }
 
   async searchProduct(params: HasDataSearchParams): Promise<{ results: HasDataResult[], requestMetadata: any }> {
     try {

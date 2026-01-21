@@ -236,17 +236,37 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
     } else {
       console.log('⚠️ [Backend] Python service not available, using HasData results directly');
       
-      // Fallback: Group HasData results by store
+      // Fallback: Group HasData results by store, selecting cheapest price per store per item
       for (const item of body.items) {
         const results = allHasDataResults[item];
+        
+        // Group results by store to select cheapest per store
+        const storeGroups: { [storeName: string]: any[] } = {};
         for (const result of results) {
           const storeName = result.source;
+          if (!storeGroups[storeName]) {
+            storeGroups[storeName] = [];
+          }
+          storeGroups[storeName].push(result);
+        }
+        
+        // Select cheapest product per store (matching frontend selectCheapestPricePerStore logic)
+        for (const [storeName, storeResults] of Object.entries(storeGroups)) {
+          // Sort by price (cheapest first) and take the first one
+          const sortedResults = storeResults.sort((a, b) => {
+            const priceA = a.extractedPrice || parseFloat(a.price?.replace(/[^0-9.]/g, '') || '0') || 0;
+            const priceB = b.extractedPrice || parseFloat(b.price?.replace(/[^0-9.]/g, '') || '0') || 0;
+            return priceA - priceB;
+          });
+          
+          const cheapestResult = sortedResults[0];
+          
           if (!storeMatches[storeName]) {
             storeMatches[storeName] = [];
           }
           storeMatches[storeName].push({
             item: item,
-            product: result,
+            product: cheapestResult,
             score: 0.5,
             confidence_ok: false,
             reason: 'hasdata_fallback',

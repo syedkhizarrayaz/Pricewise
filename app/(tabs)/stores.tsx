@@ -93,7 +93,12 @@ export default function StoresScreen() {
     try {
       // Load Google Maps JavaScript API
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyD8dkXiyOx4XoVIF4hosNG91h47zgPnsQY&libraries=places&callback=initMap`;
+      const googleApiKey = process.env.EXPO_PUBLIC_GOOGLE_PLACES_API_KEY || process.env.GOOGLE_PLACES_API_KEY || '';
+      if (!googleApiKey) {
+        console.error('❌ [Stores] GOOGLE_PLACES_API_KEY not found. Please set it in the .env file at project root.');
+        return;
+      }
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&callback=initMap`;
       script.async = true;
       script.defer = true;
       

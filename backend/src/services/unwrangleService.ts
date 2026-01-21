@@ -24,6 +24,12 @@ export interface UnwrangleSearchResult {
 export class UnwrangleService {
   private readonly API_KEY = process.env.UNWRANGLE_API_KEY || '';
   private readonly BASE_URL = 'https://data.unwrangle.com/api/getter/';
+  
+  constructor() {
+    if (!this.API_KEY) {
+      console.warn('⚠️ [Unwrangle] UNWRANGLE_API_KEY not found in environment variables. Please set it in the .env file at project root.');
+    }
+  }
 
   async searchProducts(
     query: string,
