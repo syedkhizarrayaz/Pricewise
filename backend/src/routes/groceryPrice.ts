@@ -1,7 +1,8 @@
 import { Router, Request, Response } from 'express';
-import { hasDataService } from '../services/hasDataService';
 import { pythonMatcherService } from '../services/pythonMatcherService';
 import { databaseService } from '../services/databaseService';
+import { fetchMergedPricingByItem } from '../pricing/pricingOrchestrator';
+import type { NormalizedPriceOffer } from '../pricing/types';
 
 export const groceryPriceRouter = Router();
 
@@ -23,6 +24,26 @@ interface StoreMatch {
   exact_match?: boolean;
 }
 
+/** Strip typing for JSON; keeps fields Python matcher and clients already expect. */
+function toMatcherPayload(o: NormalizedPriceOffer): Record<string, unknown> {
+  return {
+    position: o.position,
+    title: o.title,
+    productId: o.productId ?? '',
+    productLink: o.productLink ?? '',
+    price: o.price,
+    extractedPrice: o.extractedPrice,
+    source: o.source,
+    reviews: o.reviews,
+    rating: o.rating,
+    delivery: o.delivery,
+    extensions: o.extensions,
+    thumbnail: o.thumbnail,
+    providerId: o.providerId,
+    fetchedAt: o.fetchedAt,
+  };
+}
+
 interface GrocerySearchResponse {
   success: boolean;
   query: {
@@ -38,6 +59,9 @@ interface GrocerySearchResponse {
       totalPrice: number;
     };
   };
+  /** Pricing APIs that contributed to this response (after merge) */
+  pricingProvidersUsed?: string[];
+  cached?: boolean;
   pythonMatches?: {
     store_matches: { [storeName: string]: StoreMatch };
     stores_needing_ai: string[];
@@ -48,10 +72,9 @@ interface GrocerySearchResponse {
 
 /**
  * Main endpoint for grocery price search
- * This endpoint:
- * 1. Searches products using HasData API
- * 2. Matches products using Python service
- * 3. Returns unified results
+ * 1. Optional DB cache (TTL: PRICE_CACHE_TTL_SECONDS, default 2h)
+ * 2. Pluggable pricing providers (PRICING_PROVIDERS) — merge & dedupe
+ * 3. Python matcher when available, else HasData-style fallback
  */
 groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
   const startTime = Date.now();
@@ -131,10 +154,17 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
       stores: body.nearbyStores?.length || 0
     });
 
+    const nearbyStores = body.nearbyStores;
+
     // Check cache first (only if database is enabled)
     let cachedData = null;
     if (databaseService.isEnabled()) {
-      const queryHash = databaseService.generateQueryHash(body.items, body.address, body.zipCode);
+      const queryHash = databaseService.generateQueryHash(
+        body.items,
+        body.address,
+        body.zipCode,
+        nearbyStores
+      );
       cachedData = await databaseService.getCache(queryHash);
       
       if (cachedData) {
@@ -157,25 +187,27 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
 
     console.log('🔄 [Backend] No cache found, fetching fresh data');
 
-    // Step 1: Search all items using HasData
+    // Step 1: Pricing providers (HasData, Unwrangle, custom — see PRICING_PROVIDERS)
+    const pricingCtx = {
+      address: body.address,
+      zipCode: body.zipCode,
+      latitude: body.latitude,
+      longitude: body.longitude,
+      nearbyStores,
+    };
+
+    const { byItem: mergedByItem, providersUsed } = await fetchMergedPricingByItem(
+      pricingCtx,
+      body.items
+    );
+
     const allHasDataResults: { [item: string]: any[] } = {};
-    
     for (const item of body.items) {
-      try {
-        const hasDataResult = await hasDataService.searchProduct({
-          product: item,
-          address: body.address,
-          zipCode: body.zipCode,
-          latitude: body.latitude,
-          longitude: body.longitude
-        });
-        
-        allHasDataResults[item] = hasDataResult.results;
-        console.log(`✅ [Backend] HasData results for "${item}": ${hasDataResult.results.length} products`);
-      } catch (error: any) {
-        console.error(`❌ [Backend] Error searching for "${item}":`, error.message);
-        allHasDataResults[item] = [];
-      }
+      const rows = mergedByItem[item] || [];
+      allHasDataResults[item] = rows.map(toMatcherPayload);
+      console.log(
+        `✅ [Backend] Merged pricing for "${item}": ${rows.length} offers (providers: ${providersUsed.join(', ') || 'none'})`
+      );
     }
 
     // Step 2: Use Python service to match products for each item
@@ -303,6 +335,7 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
         }
       },
       stores: stores,
+      pricingProvidersUsed: providersUsed.length ? providersUsed : undefined,
       pythonMatches: pythonMatchesData || undefined,
       processing_time_ms: processingTime
     };
@@ -313,7 +346,12 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
     if (databaseService.isEnabled()) {
       (async () => {
         try {
-          const queryHash = databaseService.generateQueryHash(body.items, body.address, body.zipCode);
+          const queryHash = databaseService.generateQueryHash(
+            body.items,
+            body.address,
+            body.zipCode,
+            nearbyStores
+          );
           
           // Save location
           const locationId = await databaseService.saveLocation({
@@ -332,8 +370,8 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
           });
 
           // Save nearby stores
-          const nearbyStores = body.nearbyStores || Object.keys(stores);
-          await databaseService.saveQueryStores(queryId, nearbyStores);
+          const storesForDb = body.nearbyStores || Object.keys(stores);
+          await databaseService.saveQueryStores(queryId, storesForDb);
 
           // Prepare and save query results
           const queryResults = Object.entries(stores).map(([storeName, storeData]) => ({
@@ -346,12 +384,12 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
           }));
           await databaseService.saveQueryResults(queryId, queryResults);
 
-          // Save cache (24-hour TTL)
-          const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000);
+          const ttlMs = databaseService.getPriceCacheTtlMs();
+          const expiresAt = new Date(Date.now() + ttlMs);
           await databaseService.saveCache({
             queryHash,
             cachedResult: response,
-            nearbyStores,
+            nearbyStores: storesForDb,
             hasdataResults: allHasDataResults,
             expiresAt
           });
@@ -383,14 +421,15 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
  */
 groceryPriceRouter.get('/health', async (req: Request, res: Response) => {
   const pythonAvailable = await pythonMatcherService.isServiceAvailable();
-  
+  const { describePricingProviders } = await import('../pricing/registry');
+  const pricingProviders = await describePricingProviders();
+
   res.json({
     status: 'healthy',
     services: {
-      hasData: 'available',
       pythonMatcher: pythonAvailable ? 'available' : 'unavailable',
-      unwrangle: 'available'
-    }
+      pricingProviders,
+    },
   });
 });
 

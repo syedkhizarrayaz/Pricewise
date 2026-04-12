@@ -12,7 +12,8 @@ import { databaseService } from './services/databaseService';
 
 // Load environment variables from root .env file
 // Try root .env first, then fallback to backend/.env if it exists
-const rootEnvPath = path.resolve(__dirname, '../../../.env');
+// From backend/src or backend/dist, two levels up is the repo root
+const rootEnvPath = path.resolve(__dirname, '../../.env');
 const backendEnvPath = path.resolve(__dirname, '../.env');
 
 if (fs.existsSync(rootEnvPath)) {
