@@ -1,19 +1,17 @@
 import { Router, Request, Response } from 'express';
-import { pythonMatcherService } from '../services/pythonMatcherService';
 import { databaseService } from '../services/databaseService';
-import { fetchMergedPricingByItem } from '../pricing/pricingOrchestrator';
-import type { NormalizedPriceOffer } from '../pricing/types';
+import { pythonMatcherService } from '../services/pythonMatcherService';
+import { runGroceryPriceSearchCore } from '../services/grocerySearchCore';
+import { mapCoreStoresToComparisonResults } from '../services/groceryCompareMapper';
+import {
+  generateGeminiDraftComparison,
+  isGeminiBasketConfigured,
+} from '../services/geminiBasketService';
+import { reconcileGeminiAndBackendPricing } from '../services/geminiReconcileService';
+import { normalizeGrocerySearchBody } from '../utils/groceryRequestNormalize';
+import type { ComparisonResult } from '../types/comparison';
 
 export const groceryPriceRouter = Router();
-
-interface GrocerySearchRequest {
-  items: string[];
-  address: string;
-  zipCode: string;
-  latitude?: number;
-  longitude?: number;
-  nearbyStores?: string[];
-}
 
 interface StoreMatch {
   store: string;
@@ -22,26 +20,6 @@ interface StoreMatch {
   confidence_ok?: boolean;
   reason?: string;
   exact_match?: boolean;
-}
-
-/** Strip typing for JSON; keeps fields Python matcher and clients already expect. */
-function toMatcherPayload(o: NormalizedPriceOffer): Record<string, unknown> {
-  return {
-    position: o.position,
-    title: o.title,
-    productId: o.productId ?? '',
-    productLink: o.productLink ?? '',
-    price: o.price,
-    extractedPrice: o.extractedPrice,
-    source: o.source,
-    reviews: o.reviews,
-    rating: o.rating,
-    delivery: o.delivery,
-    extensions: o.extensions,
-    thumbnail: o.thumbnail,
-    providerId: o.providerId,
-    fetchedAt: o.fetchedAt,
-  };
 }
 
 interface GrocerySearchResponse {
@@ -59,7 +37,6 @@ interface GrocerySearchResponse {
       totalPrice: number;
     };
   };
-  /** Pricing APIs that contributed to this response (after merge) */
   pricingProvidersUsed?: string[];
   cached?: boolean;
   pythonMatches?: {
@@ -71,93 +48,33 @@ interface GrocerySearchResponse {
 }
 
 /**
- * Main endpoint for grocery price search
- * 1. Optional DB cache (TTL: PRICE_CACHE_TTL_SECONDS, default 2h)
- * 2. Pluggable pricing providers (PRICING_PROVIDERS) — merge & dedupe
- * 3. Python matcher when available, else HasData-style fallback
+ * Legacy mobile search: cache + provider merge + Python matcher.
  */
 groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
   const startTime = Date.now();
-  
+
   try {
-    const body: GrocerySearchRequest = req.body;
-    
-    // Log incoming request for debugging
+    const normalized = normalizeGrocerySearchBody(req.body);
+    if (!normalized.ok) {
+      return res.status(normalized.status).json(normalized.json);
+    }
+    const body = normalized.body;
+
     console.log('📥 [Backend] Received request:', {
       items: body.items,
       address: body.address,
       zipCode: body.zipCode,
-      hasItems: !!body.items,
-      itemsIsArray: Array.isArray(body.items),
-      itemsLength: body.items?.length || 0
+      itemsLength: body.items?.length || 0,
     });
-    
-    // Validate input
-    if (!body.items || !Array.isArray(body.items) || body.items.length === 0) {
-      console.error('❌ [Backend] Validation failed: Items array is required and cannot be empty');
-      return res.status(400).json({
-        success: false,
-        error: 'Items array is required and cannot be empty',
-        received: {
-          items: body.items,
-          itemsType: typeof body.items,
-          itemsIsArray: Array.isArray(body.items)
-        }
-      });
-    }
-
-    // Validate address
-    if (!body.address || body.address.trim().length === 0) {
-      console.error('❌ [Backend] Validation failed: Address is required');
-      return res.status(400).json({
-        success: false,
-        error: 'Address is required',
-        received: {
-          address: body.address,
-          zipCode: body.zipCode
-        }
-      });
-    }
-
-    // Extract zip code from address if not provided
-    let zipCode = body.zipCode?.trim() || '';
-    if (!zipCode && body.address) {
-      // Try to extract zip code from address (e.g., "Plano, TX 75023" or "Plano, TX 75023, USA")
-      const zipMatch = body.address.match(/\b\d{5}(-\d{4})?\b/);
-      if (zipMatch) {
-        zipCode = zipMatch[0];
-        console.log(`📮 [Backend] Extracted zip code from address: ${zipCode}`);
-      }
-    }
-
-    // If still no zip code, return error
-    if (!zipCode || zipCode.trim().length === 0) {
-      console.error('❌ [Backend] Validation failed: zipCode is required and could not be extracted from address');
-      return res.status(400).json({
-        success: false,
-        error: 'zipCode is required. Please provide zipCode or ensure address contains a valid zip code.',
-        received: {
-          address: body.address,
-          zipCode: body.zipCode
-        }
-      });
-    }
-
-    // Update body with extracted zip code if needed
-    if (zipCode !== body.zipCode) {
-      body.zipCode = zipCode;
-    }
 
     console.log(`🔍 [Backend] Starting grocery search:`, {
       items: body.items,
       location: `${body.address}, ${body.zipCode}`,
-      stores: body.nearbyStores?.length || 0
+      stores: body.nearbyStores?.length || 0,
     });
 
     const nearbyStores = body.nearbyStores;
 
-    // Check cache first (only if database is enabled)
-    let cachedData = null;
     if (databaseService.isEnabled()) {
       const queryHash = databaseService.generateQueryHash(
         body.items,
@@ -165,163 +82,27 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
         body.zipCode,
         nearbyStores
       );
-      cachedData = await databaseService.getCache(queryHash);
-      
+      const cachedData = await databaseService.getCache(queryHash);
+
       if (cachedData) {
         console.log('✅ [Backend] Returning cached result');
         return res.json({
           success: true,
           query: {
             items: body.items,
-            location: {
-              address: body.address,
-              zipCode: body.zipCode
-            }
+            location: { address: body.address, zipCode: body.zipCode },
           },
           stores: cachedData.result.stores || {},
           cached: true,
-          processing_time_ms: Date.now() - startTime
+          processing_time_ms: Date.now() - startTime,
         });
       }
     }
 
     console.log('🔄 [Backend] No cache found, fetching fresh data');
 
-    // Step 1: Pricing providers (HasData, Unwrangle, custom — see PRICING_PROVIDERS)
-    const pricingCtx = {
-      address: body.address,
-      zipCode: body.zipCode,
-      latitude: body.latitude,
-      longitude: body.longitude,
-      nearbyStores,
-    };
-
-    const { byItem: mergedByItem, providersUsed } = await fetchMergedPricingByItem(
-      pricingCtx,
-      body.items
-    );
-
-    const allHasDataResults: { [item: string]: any[] } = {};
-    for (const item of body.items) {
-      const rows = mergedByItem[item] || [];
-      allHasDataResults[item] = rows.map(toMatcherPayload);
-      console.log(
-        `✅ [Backend] Merged pricing for "${item}": ${rows.length} offers (providers: ${providersUsed.join(', ') || 'none'})`
-      );
-    }
-
-    // Step 2: Use Python service to match products for each item
-    const storeMatches: { [storeName: string]: any[] } = {};
-    let pythonMatchesData: any = null;
-
-    // Check if Python service is available
-    const pythonAvailable = await pythonMatcherService.isServiceAvailable();
-    
-    if (pythonAvailable) {
-      console.log('🤖 [Backend] Python service available, using for product matching');
-      
-      // Process each item through Python matcher
-      for (const item of body.items) {
-        const hasDataResults = allHasDataResults[item];
-        
-        if (hasDataResults.length === 0) {
-          continue;
-        }
-
-        try {
-          // Use match-products-for-stores endpoint which handles all stores at once
-          const pythonResult = await pythonMatcherService.matchProductsForStores(
-            item,
-            hasDataResults,
-            body.nearbyStores || []
-          );
-
-          if (pythonResult?.store_matches) {
-            // Group products by store
-            for (const [storeName, match] of Object.entries(pythonResult.store_matches)) {
-              if (!storeMatches[storeName]) {
-                storeMatches[storeName] = [];
-              }
-              
-              const matchData = match as StoreMatch;
-              if (matchData.product) {
-                storeMatches[storeName].push({
-                  item: item,
-                  product: matchData.product,
-                  score: matchData.score,
-                  confidence_ok: matchData.confidence_ok,
-                  reason: matchData.reason,
-                  exact_match: matchData.exact_match !== false // Include exact_match from Python service
-                });
-              }
-            }
-          }
-
-          // Store Python matches data for first item (or merge all)
-          if (!pythonMatchesData) {
-            pythonMatchesData = pythonResult;
-          }
-        } catch (error: any) {
-          console.error(`❌ [Backend] Python matcher error for "${item}":`, error.message);
-        }
-      }
-    } else {
-      console.log('⚠️ [Backend] Python service not available, using HasData results directly');
-      
-      // Fallback: Group HasData results by store, selecting cheapest price per store per item
-      for (const item of body.items) {
-        const results = allHasDataResults[item];
-        
-        // Group results by store to select cheapest per store
-        const storeGroups: { [storeName: string]: any[] } = {};
-        for (const result of results) {
-          const storeName = result.source;
-          if (!storeGroups[storeName]) {
-            storeGroups[storeName] = [];
-          }
-          storeGroups[storeName].push(result);
-        }
-        
-        // Select cheapest product per store (matching frontend selectCheapestPricePerStore logic)
-        for (const [storeName, storeResults] of Object.entries(storeGroups)) {
-          // Sort by price (cheapest first) and take the first one
-          const sortedResults = storeResults.sort((a, b) => {
-            const priceA = a.extractedPrice || parseFloat(a.price?.replace(/[^0-9.]/g, '') || '0') || 0;
-            const priceB = b.extractedPrice || parseFloat(b.price?.replace(/[^0-9.]/g, '') || '0') || 0;
-            return priceA - priceB;
-          });
-          
-          const cheapestResult = sortedResults[0];
-          
-          if (!storeMatches[storeName]) {
-            storeMatches[storeName] = [];
-          }
-          storeMatches[storeName].push({
-            item: item,
-            product: cheapestResult,
-            score: 0.5,
-            confidence_ok: false,
-            reason: 'hasdata_fallback',
-            exact_match: false // Fallback means not exact match
-          });
-        }
-      }
-    }
-
-    // Step 3: Calculate totals for each store
-    const stores: { [storeName: string]: { products: any[]; totalPrice: number } } = {};
-    
-    for (const [storeName, products] of Object.entries(storeMatches)) {
-      const totalPrice = products.reduce((sum, p) => {
-        const price = p.product?.extractedPrice || p.product?.price || 0;
-        return sum + price;
-      }, 0);
-
-      stores[storeName] = {
-        products: products,
-        totalPrice: totalPrice
-      };
-    }
+    const core = await runGroceryPriceSearchCore(body);
+    const { stores, allHasDataResults, providersUsed, pythonMatchesData } = core;
 
     const processingTime = Date.now() - startTime;
 
@@ -329,20 +110,16 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
       success: true,
       query: {
         items: body.items,
-        location: {
-          address: body.address,
-          zipCode: body.zipCode
-        }
+        location: { address: body.address, zipCode: body.zipCode },
       },
-      stores: stores,
+      stores,
       pricingProvidersUsed: providersUsed.length ? providersUsed : undefined,
       pythonMatches: pythonMatchesData || undefined,
-      processing_time_ms: processingTime
+      processing_time_ms: processingTime,
     };
 
     console.log(`✅ [Backend] Search completed in ${processingTime}ms: ${Object.keys(stores).length} stores`);
 
-    // Save to database (async, don't block response) - only if database is enabled
     if (databaseService.isEnabled()) {
       (async () => {
         try {
@@ -352,35 +129,31 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
             body.zipCode,
             nearbyStores
           );
-          
-          // Save location
+
           const locationId = await databaseService.saveLocation({
             address: body.address,
             zipCode: body.zipCode,
             latitude: body.latitude,
             longitude: body.longitude,
-            locationSource: (body.latitude && body.longitude) ? 'gps' : 'manual'
+            locationSource: body.latitude && body.longitude ? 'gps' : 'manual',
           });
 
-          // Save query
           const queryId = await databaseService.saveQuery({
             locationId,
             items: body.items,
-            queryHash
+            queryHash,
           });
 
-          // Save nearby stores
           const storesForDb = body.nearbyStores || Object.keys(stores);
           await databaseService.saveQueryStores(queryId, storesForDb);
 
-          // Prepare and save query results
           const queryResults = Object.entries(stores).map(([storeName, storeData]) => ({
             queryId,
             storeName,
             totalPrice: storeData.totalPrice,
             products: storeData.products,
             resultType: 'hasdata' as const,
-            exactMatch: storeData.products.some((p: any) => p.exact_match === true) || false
+            exactMatch: storeData.products.some((p: any) => p.exact_match === true) || false,
           }));
           await databaseService.saveQueryResults(queryId, queryResults);
 
@@ -391,34 +164,97 @@ groceryPriceRouter.post('/search', async (req: Request, res: Response) => {
             cachedResult: response,
             nearbyStores: storesForDb,
             hasdataResults: allHasDataResults,
-            expiresAt
+            expiresAt,
           });
 
           console.log('💾 [Backend] Data saved to database successfully');
         } catch (dbError: any) {
           console.error('❌ [Backend] Error saving to database:', dbError.message);
-          // Don't fail the request if database save fails
         }
       })();
     }
 
     res.json(response);
-
   } catch (error: any) {
     console.error('❌ [Backend] Error in grocery search:', error);
-    const processingTime = Date.now() - startTime;
-    
     res.status(500).json({
       success: false,
       error: error.message || 'Internal server error',
-      processing_time_ms: processingTime
+      processing_time_ms: Date.now() - startTime,
     });
   }
 });
 
 /**
- * Health check for grocery service
+ * Web client v2: Gemini draft (server) + live providers + Python matcher,
+ * then a reconcile pass. Returns ComparisonResult[] for the Find UI.
+ *
+ * Optional: send `clientGeminiDraft` (same schema) ONLY when
+ * ALLOW_CLIENT_GEMINI_DRAFT=true (dev / trusted clients). Otherwise draft is server-only.
  */
+groceryPriceRouter.post('/compare-unified', async (req: Request, res: Response) => {
+  const startTime = Date.now();
+
+  try {
+    const normalized = normalizeGrocerySearchBody(req.body);
+    if (!normalized.ok) {
+      return res.status(normalized.status).json(normalized.json);
+    }
+    const body = normalized.body;
+
+    let geminiDraft: ComparisonResult[] = [];
+
+    const allowClientDraft = process.env.ALLOW_CLIENT_GEMINI_DRAFT === 'true';
+    const clientDraft = req.body?.clientGeminiDraft;
+    if (allowClientDraft && Array.isArray(clientDraft) && clientDraft.length > 0) {
+      geminiDraft = clientDraft as ComparisonResult[];
+      console.log('ℹ️ [Backend] Using client-supplied Gemini draft (ALLOW_CLIENT_GEMINI_DRAFT=true)');
+    } else if (isGeminiBasketConfigured()) {
+      try {
+        geminiDraft = await generateGeminiDraftComparison(
+          body.items,
+          `${body.address}, ${body.zipCode}`,
+          body.latitude !== undefined && body.longitude !== undefined
+            ? { lat: body.latitude, lng: body.longitude }
+            : undefined
+        );
+      } catch (e: any) {
+        console.error('⚠️ [Backend] Gemini draft failed (continuing with backend only):', e.message);
+        geminiDraft = [];
+      }
+    } else {
+      console.log('ℹ️ [Backend] Gemini basket skipped (no GEMINI_API_KEY)');
+    }
+
+    const core = await runGroceryPriceSearchCore(body);
+    const backendComparison = mapCoreStoresToComparisonResults(core, body.items);
+
+    const finalResults: ComparisonResult[] =
+      geminiDraft.length > 0
+        ? await reconcileGeminiAndBackendPricing(body.items, geminiDraft, backendComparison)
+        : backendComparison;
+
+    return res.json({
+      success: true,
+      results: finalResults,
+      sources: {
+        backendPricing: true,
+        geminiDraft: geminiDraft.length > 0,
+        reconciled: geminiDraft.length > 0,
+        pricingProvidersUsed: core.providersUsed,
+      },
+      processing_time_ms: Date.now() - startTime,
+    });
+  } catch (error: any) {
+    console.error('❌ [Backend] compare-unified error:', error);
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal server error',
+      processing_time_ms: Date.now() - startTime,
+    });
+  }
+});
+
 groceryPriceRouter.get('/health', async (req: Request, res: Response) => {
   const pythonAvailable = await pythonMatcherService.isServiceAvailable();
   const { describePricingProviders } = await import('../pricing/registry');
@@ -429,7 +265,7 @@ groceryPriceRouter.get('/health', async (req: Request, res: Response) => {
     services: {
       pythonMatcher: pythonAvailable ? 'available' : 'unavailable',
       pricingProviders,
+      geminiBasket: isGeminiBasketConfigured() ? 'configured' : 'not_configured',
     },
   });
 });
-

@@ -24,6 +24,7 @@ import re
 import os
 import json
 import time
+import ssl
 from urllib import request as urlrequest, error as urlerror
 import math
 import logging
@@ -46,6 +47,13 @@ try:
     from sklearn.metrics.pairwise import cosine_similarity
 except ImportError:
     raise ImportError("scikit-learn is required. Install with: pip install scikit-learn")
+
+try:
+    import certifi
+
+    _SSL_CAFILE = certifi.where()
+except ImportError:
+    _SSL_CAFILE = None
 
 # Optional embeddings for better semantic matching
 USE_EMBEDDINGS = True
@@ -268,7 +276,11 @@ def call_openai_extract_components(query: str, timeout_seconds: int = 12) -> Opt
 
     try:
         logger.info(f"🚀 Making OpenAI API call...")
-        with urlrequest.urlopen(req, timeout=timeout_seconds) as resp:
+        if _SSL_CAFILE:
+            ssl_ctx = ssl.create_default_context(cafile=_SSL_CAFILE)
+        else:
+            ssl_ctx = ssl.create_default_context()
+        with urlrequest.urlopen(req, timeout=timeout_seconds, context=ssl_ctx) as resp:
             response_data = resp.read().decode("utf-8")
             payload = json.loads(response_data)
             
@@ -920,11 +932,12 @@ async def match_products_for_stores(request: Dict[str, Any]):
     try:
         query = request.get("query", "")
         hasdata_results = request.get("hasdata_results", [])
-        nearby_stores = request.get("nearby_stores", [])
+        nearby_stores = request.get("nearby_stores") or []
+        if not isinstance(nearby_stores, list):
+            nearby_stores = []
         
         logger.info(f"Processing query: {query}")
         logger.info(f"HasData results: {len(hasdata_results)}")
-        logger.info(f"Nearby stores: {len(nearby_stores)}")
         
         if not query or not hasdata_results:
             raise HTTPException(status_code=400, detail="Query and hasdata_results are required")
@@ -936,6 +949,16 @@ async def match_products_for_stores(request: Dict[str, Any]):
             if store_name not in store_results:
                 store_results[store_name] = []
             store_results[store_name].append(result)
+
+        # When the client sends no Places/nearby list, still return per-source matches
+        if not nearby_stores:
+            nearby_stores = list(store_results.keys())
+            logger.info(
+                "ℹ️ nearby_stores was empty; using %d HasData source names as store targets",
+                len(nearby_stores),
+            )
+
+        logger.info(f"Nearby stores (effective): {len(nearby_stores)}")
         
         # Log available HasData sources
         logger.info(f"📦 HasData sources available: {list(store_results.keys())}")

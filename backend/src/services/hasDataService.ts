@@ -37,13 +37,18 @@ export interface HasDataResponse {
 }
 
 export class HasDataService {
-  private readonly API_KEY = process.env.HASDATA_API_KEY || '';
   private readonly BASE_URL = 'https://api.hasdata.com/scrape/google/shopping';
-  
-  constructor() {
-    if (!this.API_KEY) {
-      console.warn('⚠️ [HasData] HASDATA_API_KEY not found in environment variables. Please set it in the .env file at project root.');
+  private warnedMissingKey = false;
+
+  private getApiKey(): string {
+    const key = (process.env.HASDATA_API_KEY || '').trim();
+    if (!key && !this.warnedMissingKey) {
+      this.warnedMissingKey = true;
+      console.warn(
+        '⚠️ [HasData] HASDATA_API_KEY not found in environment variables. Set it in repo root .env and restart the backend.'
+      );
     }
+    return key;
   }
 
   async searchProduct(params: HasDataSearchParams): Promise<{ results: HasDataResult[], requestMetadata: any }> {
@@ -95,7 +100,7 @@ export class HasDataService {
           deviceType: 'desktop'
         },
         headers: {
-          'x-api-key': this.API_KEY,
+          'x-api-key': this.getApiKey(),
           'Content-Type': 'application/json'
         }
       };
@@ -134,7 +139,7 @@ export class HasDataService {
             deviceType: 'desktop'
           },
           headers: {
-            'x-api-key': this.API_KEY,
+            'x-api-key': this.getApiKey(),
             'Content-Type': 'application/json'
           }
         };

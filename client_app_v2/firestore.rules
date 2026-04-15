@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email']) &&
+             data.uid is string &&
+             data.email is string;
+    }
+
+    function isValidList(data) {
+      return data.keys().hasAll(['id', 'userId', 'name', 'items']) &&
+             data.id is string &&
+             data.userId is string &&
+             data.name is string &&
+             data.items is list;
+    }
+
+    match /users/{userId} {
+      allow read, write: if isOwner(userId);
+      
+      match /lists/{listId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+  }
+}

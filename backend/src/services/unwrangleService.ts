@@ -22,13 +22,18 @@ export interface UnwrangleSearchResult {
 }
 
 export class UnwrangleService {
-  private readonly API_KEY = process.env.UNWRANGLE_API_KEY || '';
   private readonly BASE_URL = 'https://data.unwrangle.com/api/getter/';
-  
-  constructor() {
-    if (!this.API_KEY) {
-      console.warn('⚠️ [Unwrangle] UNWRANGLE_API_KEY not found in environment variables. Please set it in the .env file at project root.');
+  private warnedMissingKey = false;
+
+  private getApiKey(): string {
+    const key = (process.env.UNWRANGLE_API_KEY || '').trim();
+    if (!key && !this.warnedMissingKey) {
+      this.warnedMissingKey = true;
+      console.warn(
+        '⚠️ [Unwrangle] UNWRANGLE_API_KEY not found in environment variables. Set it in repo root .env and restart the backend.'
+      );
     }
+    return key;
   }
 
   async searchProducts(
@@ -41,7 +46,7 @@ export class UnwrangleService {
         platform,
         search: query,
         country_code: countryCode,
-        api_key: this.API_KEY,
+        api_key: this.getApiKey(),
       });
 
       const url = `${this.BASE_URL}?${params.toString()}`;
