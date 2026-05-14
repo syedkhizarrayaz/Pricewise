@@ -409,6 +409,7 @@ If you use `REDIS_URL` in `.env`, Redis must be reachable from the container. Fo
 |------|----------|
 | `deployment/README.md` | Scripts overview, quick health commands |
 | `deployment/DIGITALOCEAN_DEPLOYMENT.md` | Long-form DO guide (DB, nginx, etc.) |
+| `deployment/HTTPS_DOMAIN_SETUP.md` | **HTTPS + domain** (Hostinger DNS, nginx, Let’s Encrypt, CORS) |
 | `deployment/FILE_TRANSFER_GUIDE.md` | Git, scp, rsync, SFTP options |
 
 ---
