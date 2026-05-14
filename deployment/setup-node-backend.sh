@@ -75,8 +75,12 @@ if [ ! -f "$PROJECT_DIR/backend/.env" ]; then
     read -p "Enter Python Service URL (default: http://localhost:8000): " PYTHON_URL
     PYTHON_URL=${PYTHON_URL:-http://localhost:8000}
     
-    read -p "Enable database? (true/false, default: true): " ENABLE_DB
-    ENABLE_DB=${ENABLE_DB:-true}
+    read -p "Enable database? (true/false, default: false): " ENABLE_DB
+    ENABLE_DB=${ENABLE_DB:-false}
+
+    read -p "Enter Redis URL (optional, e.g. redis://localhost:6379): " REDIS_URL
+    read -p "Enter cache TTL in seconds (default: 86400): " CACHE_TTL
+    CACHE_TTL=${CACHE_TTL:-86400}
     
     if [ "$ENABLE_DB" = "true" ]; then
         read -p "Enter database host (default: localhost): " DB_HOST
@@ -123,6 +127,10 @@ OPENAI_API_KEY=$OPENAI_KEY
 
 # Service URLs
 PYTHON_SERVICE_URL=$PYTHON_URL
+
+# Cache Configuration
+PRICE_CACHE_TTL_SECONDS=$CACHE_TTL
+REDIS_URL=$REDIS_URL
 EOF
     
     chmod 600 "$PROJECT_DIR/backend/.env"

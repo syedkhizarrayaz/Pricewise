@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { US_STATE_ABBR_TO_NAME } from '../utils/usStateNames';
 
 export interface HasDataSearchParams {
   product: string;
@@ -55,47 +56,26 @@ export class HasDataService {
     try {
       console.log('🔍 [HasData] Searching for:', params.product, 'near', params.address, params.zipCode);
       
-      const location = this.formatLocationForAPI(params.address, params.zipCode);
-      
-      // Remove country and ensure no trailing commas or zip codes
-      // Handle cases where location might already have "USA" at the end
-      let locationWithoutCountry = location
-        .replace(/,?\s*USA\s*,?\s*USA$/i, ', USA') // Remove duplicate USA
-        .replace(/,?\s*USA?$/i, '') // Remove single USA
-        .replace(/,?\s*United States$/i, '')
-        .trim();
-      
-      // Remove any zip codes that might have been left behind (e.g., "City, ST 75074")
-      locationWithoutCountry = locationWithoutCountry.replace(/\s+\d{5}(-\d{4})?$/, '');
-      
-      // Clean up any double commas or trailing commas
-      locationWithoutCountry = locationWithoutCountry.replace(/,\s*,/g, ',').replace(/,\s*$/, '').trim();
-      
-      // Extract zip code from address or params
-      let zipCode = params.zipCode?.trim() || '';
-      if (!zipCode && params.address) {
-        const zipMatch = params.address.match(/\b\d{5}(-\d{4})?\b/);
-        if (zipMatch) {
-          zipCode = zipMatch[0];
-        }
-      }
-      
-      // First API call: without zip code in query
-      const queryWithoutZip = `${params.product} near ${locationWithoutCountry}`;
-      
-      console.log('📍 [HasData] Formatted location:', location);
-      console.log('📍 [HasData] Query location (without zip):', locationWithoutCountry);
-      console.log('🔍 [HasData] First API request (without zip):', JSON.stringify({
+      /** Geographic location for HasData `location` param: City,State,United States */
+      const location = this.formatGeographicLocationParameter(params.address, params.zipCode);
+
+      /** Shopping query near-clause: e.g. "6501 … Pkwy, Plano TX 75023" (no duplicate zip). */
+      const nearSuffix = this.formatShoppingQueryNearSuffix(params.address, params.zipCode);
+      const queryPrimary = `${params.product} near ${nearSuffix}`;
+
+      console.log('📍 [HasData] Geographic location (API `location`):', location);
+      console.log('📍 [HasData] Near suffix for shopping query `q`:', nearSuffix);
+      console.log('🔍 [HasData] Primary request:', JSON.stringify({
         deviceType: 'desktop',
         location: location,
-        q: queryWithoutZip
+        q: queryPrimary
       }));
       
       const options1 = {
         method: 'GET',
         url: this.BASE_URL,
         params: {
-          q: queryWithoutZip,
+          q: queryPrimary,
           location: location,
           deviceType: 'desktop'
         },
@@ -119,58 +99,6 @@ export class HasDataService {
       } catch (error: any) {
         console.error('❌ [HasData] First API call error:', error.message);
       }
-      
-      // Second API call: with zip code in query (if zip code is available)
-      if (zipCode) {
-        const queryWithZip = `${params.product} near ${locationWithoutCountry} ${zipCode}`;
-        
-        console.log('🔍 [HasData] Second API request (with zip):', JSON.stringify({
-          deviceType: 'desktop',
-          location: location,
-          q: queryWithZip
-        }));
-        
-        const options2 = {
-          method: 'GET',
-          url: this.BASE_URL,
-          params: {
-            q: queryWithZip,
-            location: location,
-            deviceType: 'desktop'
-          },
-          headers: {
-            'x-api-key': this.getApiKey(),
-            'Content-Type': 'application/json'
-          }
-        };
-
-        try {
-          const { data: data2 } = await axios.request(options2);
-          console.log('✅ [HasData] Second API response received:', data2.shoppingResults?.length || 0, 'results');
-          
-          if (data2.shoppingResults && data2.shoppingResults.length > 0) {
-            // Combine results, avoiding duplicates by title and source
-            const existingKeys = new Set(
-              allResults.map(r => `${r.title?.toLowerCase()}_${r.source?.toLowerCase()}`)
-            );
-            
-            for (const result of data2.shoppingResults) {
-              const key = `${result.title?.toLowerCase()}_${result.source?.toLowerCase()}`;
-              if (!existingKeys.has(key)) {
-                allResults.push(result);
-                existingKeys.add(key);
-              }
-            }
-            
-            // Use metadata from second call if first didn't have it
-            if (!requestMetadata && data2.requestMetadata) {
-              requestMetadata = data2.requestMetadata;
-            }
-          }
-        } catch (error: any) {
-          console.error('❌ [HasData] Second API call error:', error.message);
-        }
-      }
 
       console.log('✅ [HasData] Combined results:', allResults.length, 'total unique results');
 
@@ -190,82 +118,80 @@ export class HasDataService {
     }
   }
 
-  private formatLocationForAPI(address: string, zipCode: string): string {
+  /**
+   * HasData `location` (geographic): City,State,United States — full state name, spelled-out country.
+   */
+  private formatGeographicLocationParameter(address: string, zipParam: string): string {
     try {
-      // Remove zip code from address if it exists (to avoid duplicates)
-      // Handle formats like "City, ST 12345" or "City, ST, 12345" or "City, ST 12345, USA"
-      let cleanAddress = address.trim();
-      
-      // Remove zip code patterns from the end of address
-      // Matches: " 75074", ", 75074", " 75074-1234", etc.
-      cleanAddress = cleanAddress.replace(/[,]?\s*\d{5}(-\d{4})?(\s*,?\s*USA?)?$/i, '');
-      
-      const addressParts = cleanAddress.split(',').map(part => part.trim()).filter(part => part.length > 0);
-      
-      if (addressParts.length >= 2) {
-        // Find city and state
-        // Usually format: "Street", "City", "ST" or "Street", "City ST"
-        let city = '';
-        let state = '';
-        
-        // Try to find state abbreviation (2 uppercase letters)
-        const stateMatch = cleanAddress.match(/,?\s*([A-Z]{2})\s*,?/);
-        if (stateMatch) {
-          state = stateMatch[1];
-          // Extract city (usually before state)
-          const beforeState = cleanAddress.substring(0, stateMatch.index || 0);
-          const cityParts = beforeState.split(',').map(p => p.trim());
-          city = cityParts[cityParts.length - 1] || addressParts[0];
-        } else {
-          // Fallback: assume last part is state or use addressParts
-          if (addressParts.length >= 2) {
-            city = addressParts[addressParts.length - 2];
-            state = addressParts[addressParts.length - 1].replace(/[^A-Z]/g, '').substring(0, 2);
-          }
-        }
-        
-        // Validate state is 2 uppercase letters
-        if (!state || state.length !== 2 || !/^[A-Z]{2}$/.test(state)) {
-          // Fallback: try to extract from original address
-          const fallbackMatch = address.match(/\b([A-Z]{2})\b/);
-          if (fallbackMatch) {
-            state = fallbackMatch[1];
-          } else {
-            state = 'TX'; // Default fallback
-          }
-        }
-        
-        // Use city from addressParts if not found
-        if (!city || city.length === 0) {
-          city = addressParts[0] || 'Unknown';
-        }
-        
-        // Clean up - ensure no duplicate "USA" and proper formatting
-        let formatted = `${city}, ${state}, USA`;
-        // Remove any duplicate "USA" that might have been in the original (handle multiple cases)
-        formatted = formatted.replace(/,\s*USA\s*,?\s*USA\s*,?\s*USA/gi, ', USA'); // Remove triple or more
-        formatted = formatted.replace(/,\s*USA\s*,?\s*USA/gi, ', USA'); // Remove double
-        formatted = formatted.trim();
-        
-        // Final check: if it still has duplicate, replace it one more time
-        if (formatted.match(/USA.*USA/)) {
-          formatted = formatted.replace(/USA\s*,?\s*USA/gi, 'USA').trim();
-        }
-        
-        return formatted;
-      } else {
-        // Try regex pattern matching
-        const cityMatch = address.match(/([A-Za-z\s]+),\s*([A-Z]{2})\b/);
-        if (cityMatch) {
-          return `${cityMatch[1].trim()}, ${cityMatch[2]}, USA`;
-        }
-      }
-      
-      return 'Sachse, TX, USA';
-    } catch (error) {
-      console.log('⚠️ [HasData] Location formatting failed:', error);
-      return 'Sachse, TX, USA';
+      const parsed = this.parseUsAddressTail(address, zipParam);
+      if (!parsed) return 'Plano,Texas,United States';
+
+      const fullState = US_STATE_ABBR_TO_NAME[parsed.stateCode];
+      if (!fullState) return `${parsed.city},${parsed.stateCode},United States`;
+
+      const city = parsed.city.replace(/\s+/g, ' ').trim();
+      return `${city},${fullState},United States`;
+    } catch {
+      return 'Plano,Texas,United States';
     }
+  }
+
+  /**
+   * Shopping `q` near-clause: full street + city + ST + zip once, e.g.
+   * "6501 Independence Pkwy, Plano TX 75023" (not "… TX 75023 75023").
+   */
+  private formatShoppingQueryNearSuffix(address: string, zipParam: string): string {
+    const parsed = this.parseUsAddressTail(address, zipParam);
+    const zipFinal = (parsed?.zip || zipParam || '').trim();
+    if (parsed && zipFinal) {
+      return `${parsed.streetPart}, ${parsed.city} ${parsed.stateCode} ${zipFinal}`
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    let s = address.trim().replace(/\s+/g, ' ').replace(/\n\r?/g, ', ');
+    s = s.replace(/,?\s*(USA|United States)\s*$/i, '').trim();
+    s = this.dedupeTrailingZip(s);
+    const z = (zipParam || '').trim();
+    if (z && !/\b\d{5}(-\d{4})?\b/.test(s)) {
+      s = `${s} ${z}`.trim();
+    }
+    return this.dedupeTrailingZip(s);
+  }
+
+  private dedupeTrailingZip(s: string): string {
+    return s.replace(/(\b\d{5}(?:-\d{4})?)(?:\s+\1)+\s*$/i, '$1').trim();
+  }
+
+  /** Parse "...Street, City, ST [zip]" US tail; zip from address or param. */
+  private parseUsAddressTail(
+    address: string,
+    zipParam: string
+  ): { streetPart: string; city: string; stateCode: string; zip: string } | null {
+    let s = address.trim().replace(/\s+/g, ' ').replace(/\n\r?/g, ', ');
+    s = s.replace(/,?\s*(USA|United States)\s*$/i, '').trim();
+
+    let zip = (zipParam || '').trim();
+    const zipAtEnd = s.match(/\b(\d{5}(?:-\d{4})?)\s*$/);
+    if (zipAtEnd) {
+      zip = zip || zipAtEnd[1]!;
+      s = s.slice(0, s.length - zipAtEnd[0].length).replace(/,\s*$/, '').trim();
+    } else if (zip) {
+      // keep zip from param only
+    }
+
+    const m = s.match(/^(.+),\s*([^,]+),\s*([A-Z]{2})\s*$/);
+    if (!m) return null;
+
+    const streetPart = m[1]!.trim();
+    const city = m[2]!.trim();
+    const stateCode = m[3]!;
+    if (!zip) {
+      const inner = address.match(/\b(\d{5}(?:-\d{4})?)\b/g);
+      if (inner?.length) zip = inner[inner.length - 1]!;
+    }
+    if (!/^[A-Z]{2}$/.test(stateCode)) return null;
+    return { streetPart, city, stateCode, zip: zip || '' };
   }
 
   filterStoresByLists(results: HasDataResult[], majorStores: string[], nearbyStores: string[]): HasDataResult[] {

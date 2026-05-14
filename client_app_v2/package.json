@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port=3000 --host=0.0.0.0",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
@@ -17,7 +17,7 @@
     "cap:run:ios": "npx cap run ios",
     "mobile:build": "npm run build && npx cap sync",
     "mobile:dev:android": "npx cap run android -l --host=0.0.0.0 --port=3000",
-    "mobile:dev:ios": "npx cap run ios -l --host=0.0.0.0 --port=3000"
+    "mobile:dev:ios": "npx cap run ios -l --host=localhost --port=3000"
   },
   "dependencies": {
     "@capacitor/core": "^7.4.4",

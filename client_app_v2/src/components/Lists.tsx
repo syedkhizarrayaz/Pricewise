@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, ChevronRight, ShoppingBag, Clock, Loader2, X, List as ListIcon, Calendar } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { collection, query, onSnapshot, addDoc, deleteDoc, doc, orderBy, updateDoc } from 'firebase/firestore';
+import {
+  collection,
+  query,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  updateDoc,
+  setDoc,
+} from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 import { ShoppingList } from '../types';
-import { cn } from '../lib/utils';
+import { cn, withTimeout } from '../lib/utils';
+
+const FIRESTORE_WRITE_MS = 20_000;
 
 export function Lists() {
   const { user } = useAuth();
@@ -16,6 +26,7 @@ export function Lists() {
   const [newListName, setNewListName] = useState('');
   const [newListItems, setNewListItems] = useState('');
   const [isCreating, setIsCreating] = useState(false);
+  const [listError, setListError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) {
@@ -23,22 +34,33 @@ export function Lists() {
       return;
     }
 
-    const q = query(
-      collection(db, `users/${user.uid}/lists`),
-      orderBy('createdAt', 'desc')
-    );
+    setListError(null);
+    // No orderBy: avoids composite-index requirements on new Firebase projects.
+    const q = query(collection(db, `users/${user.uid}/lists`));
 
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      const fetchedLists: ShoppingList[] = [];
-      snapshot.forEach((doc) => {
-        fetchedLists.push({ id: doc.id, ...doc.data() } as ShoppingList);
-      });
-      setLists(fetchedLists);
-      setLoading(false);
-    }, (error) => {
-      console.error("Error fetching lists:", error);
-      setLoading(false);
-    });
+    const unsubscribe = onSnapshot(
+      q,
+      (snapshot) => {
+        const fetchedLists: ShoppingList[] = [];
+        snapshot.forEach((d) => {
+          fetchedLists.push({ id: d.id, ...d.data() } as ShoppingList);
+        });
+        fetchedLists.sort((a, b) => {
+          const ta = a.createdAt ?? a.updatedAt ?? 0;
+          const tb = b.createdAt ?? b.updatedAt ?? 0;
+          return tb - ta;
+        });
+        setLists(fetchedLists);
+        setLoading(false);
+      },
+      (error) => {
+        console.error('Error fetching lists:', error);
+        setListError(
+          error instanceof Error ? error.message : 'Could not load lists. Check Firestore rules and indexes.'
+        );
+        setLoading(false);
+      }
+    );
 
     return () => unsubscribe();
   }, [user]);
@@ -48,6 +70,7 @@ export function Lists() {
     if (!user || !newListName.trim() || isCreating) return;
 
     setIsCreating(true);
+    setListError(null);
     try {
       const items = newListItems.split('\n').filter(i => i.trim());
       const listData = {
@@ -57,21 +80,39 @@ export function Lists() {
       };
 
       if (editingList) {
-        await updateDoc(doc(db, `users/${user.uid}/lists`, editingList.id), listData);
+        await withTimeout(
+          updateDoc(doc(db, `users/${user.uid}/lists`, editingList.id), {
+            ...listData,
+            id: editingList.id,
+            userId: user.uid,
+          }),
+          FIRESTORE_WRITE_MS,
+          'Saving list'
+        );
       } else {
-        await addDoc(collection(db, `users/${user.uid}/lists`), {
-          ...listData,
-          createdAt: Date.now(),
-          userId: user.uid
-        });
+        const colRef = collection(db, `users/${user.uid}/lists`);
+        const newRef = doc(colRef);
+        await withTimeout(
+          setDoc(newRef, {
+            ...listData,
+            id: newRef.id,
+            userId: user.uid,
+            createdAt: Date.now(),
+          }),
+          FIRESTORE_WRITE_MS,
+          'Creating list'
+        );
       }
-      
+
       setNewListName('');
       setNewListItems('');
       setEditingList(null);
       setShowAddModal(false);
     } catch (error) {
-      console.error("Error saving list:", error);
+      console.error('Error saving list:', error);
+      setListError(
+        error instanceof Error ? error.message : 'Could not save list. Check Firestore rules for users/{uid}/lists.'
+      );
     } finally {
       setIsCreating(false);
     }
@@ -89,14 +130,18 @@ export function Lists() {
     e.stopPropagation();
     if (!user) return;
     try {
-      await deleteDoc(doc(db, `users/${user.uid}/lists`, id));
+      await withTimeout(deleteDoc(doc(db, `users/${user.uid}/lists`, id)), FIRESTORE_WRITE_MS, 'Deleting list');
     } catch (error) {
-      console.error("Error deleting list:", error);
+      console.error('Error deleting list:', error);
+      setListError(
+        error instanceof Error ? error.message : 'Could not delete list. Check your connection.'
+      );
     }
   };
 
-  const formatDate = (timestamp: number) => {
-    return new Date(timestamp).toLocaleDateString('en-US', {
+  const formatDate = (timestamp: number | undefined) => {
+    const t = typeof timestamp === 'number' && !Number.isNaN(timestamp) ? timestamp : 0;
+    return new Date(t).toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric'
     });
@@ -124,6 +169,11 @@ export function Lists() {
           <p className="text-muted-foreground text-[10px] font-black uppercase tracking-[0.2em] mt-2 ml-0.5">
             {lists.length} Collections
           </p>
+          {listError && (
+            <p className="mt-3 text-[10px] font-bold text-destructive uppercase tracking-wide max-w-[280px] leading-relaxed">
+              {listError}
+            </p>
+          )}
         </div>
         <motion.button 
           whileHover={{ scale: 1.05 }}
@@ -222,6 +272,11 @@ export function Lists() {
                 </div>
 
                 <form onSubmit={handleCreateList} className="space-y-8">
+                  {listError && (
+                    <p className="text-[10px] font-bold text-destructive uppercase tracking-wide bg-destructive/10 py-3 px-4 rounded-2xl">
+                      {listError}
+                    </p>
+                  )}
                   <div>
                     <label className="block text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] mb-3 ml-1">
                       List Name

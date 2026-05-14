@@ -19,7 +19,7 @@ export interface CompareUnifiedParams {
 }
 
 /**
- * Full pipeline on Node: Gemini draft (server) + HasData/Unwrangle + Python matcher + reconcile agent.
+ * Node pipeline: HasData (per list item) + OpenAI list normalization + OpenAI per-store product pick (see backend simplified pipeline).
  * No API keys in the browser bundle.
  */
 export async function compareUnifiedPrices(params: CompareUnifiedParams): Promise<ComparisonResult[]> {

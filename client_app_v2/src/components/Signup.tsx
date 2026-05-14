@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Mail, Lock, User, Loader2, Globe } from 'lucide-react';
+import { Mail, Lock, User, Loader2, Globe, Eye, EyeOff } from 'lucide-react';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth, db } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useAuth } from '../contexts/AuthContext';
 
 import { motion } from 'motion/react';
+import { formatFirebaseAuthError } from '../lib/firebaseAuthErrors';
+import { withTimeout } from '../lib/utils';
 
 export function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -24,22 +27,29 @@ export function Signup() {
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      
-      await updateProfile(user, { displayName: name });
-      
-      // Save user profile to Firestore
-      await setDoc(doc(db, 'users', user.uid), {
-        uid: user.uid,
-        email: user.email,
-        displayName: name,
-        totalSavings: 0,
-        notificationsEnabled: true,
-        createdAt: Date.now()
-      });
-      
+
+      await withTimeout(updateProfile(user, { displayName: name }), 12_000, 'Updating profile');
+
+      try {
+        await withTimeout(
+          setDoc(doc(db, 'users', user.uid), {
+            uid: user.uid,
+            email: user.email,
+            displayName: name,
+            totalSavings: 0,
+            notificationsEnabled: true,
+            createdAt: Date.now(),
+          }),
+          15_000,
+          'Saving profile to cloud'
+        );
+      } catch (syncErr) {
+        console.warn('Firestore profile sync failed or timed out (you are still signed up):', syncErr);
+      }
+
       navigate('/');
-    } catch (err: any) {
-      setError(err.message || 'Failed to create account');
+    } catch (err: unknown) {
+      setError(formatFirebaseAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -130,15 +140,25 @@ export function Signup() {
             <div className="space-y-2">
               <label className="block text-[10px] font-black text-muted-foreground uppercase tracking-[0.2em] ml-1">Password</label>
               <div className="relative group">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors pointer-events-none" />
                 <input
-                  type="password"
+                  type={showPassword ? 'text' : 'password'}
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-12 pr-5 py-4 modern-input"
+                  className="block w-full pl-12 pr-12 py-4 modern-input"
                   placeholder="••••••••"
+                  autoComplete="new-password"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" strokeWidth={2} /> : <Eye className="w-5 h-5" strokeWidth={2} />}
+                </button>
               </div>
             </div>
 

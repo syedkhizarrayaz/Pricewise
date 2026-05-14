@@ -4,7 +4,7 @@
  */
 
 import { Router, Request, Response } from 'express';
-import { databaseService } from '../services/databaseService';
+import { cacheService } from '../services/cacheService';
 
 export const analyticsRouter = Router();
 
@@ -14,30 +14,15 @@ export const analyticsRouter = Router();
  */
 analyticsRouter.get('/', async (req: Request, res: Response) => {
   try {
-    if (!databaseService.isEnabled()) {
-      return res.json({
-        success: true,
-        message: 'Database is disabled. Set ENABLE_DATABASE=true to enable analytics.',
-        analytics: [],
-        period: {
-          startDate: req.query.startDate as string,
-          endDate: req.query.endDate as string
-        }
-      });
-    }
-
-    const startDate = req.query.startDate ? new Date(req.query.startDate as string) : undefined;
-    const endDate = req.query.endDate ? new Date(req.query.endDate as string) : undefined;
-
-    const analytics = await databaseService.getAnalytics(startDate, endDate);
-
     res.json({
       success: true,
-      analytics,
+      message: 'Relational analytics disabled. Using cache-only mode.',
+      cache: cacheService.status(),
+      analytics: [],
       period: {
-        startDate: startDate?.toISOString(),
-        endDate: endDate?.toISOString()
-      }
+        startDate: req.query.startDate as string,
+        endDate: req.query.endDate as string
+      },
     });
   } catch (error: any) {
     console.error('❌ [Analytics] Error:', error);
@@ -54,22 +39,11 @@ analyticsRouter.get('/', async (req: Request, res: Response) => {
  */
 analyticsRouter.get('/queries', async (req: Request, res: Response) => {
   try {
-    if (!databaseService.isEnabled()) {
-      return res.json({
-        success: true,
-        message: 'Database is disabled. Set ENABLE_DATABASE=true to enable statistics.',
-        statistics: [],
-        count: 0
-      });
-    }
-
-    const limit = parseInt(req.query.limit as string) || 100;
-    const statistics = await databaseService.getQueryStatistics(limit);
-
     res.json({
       success: true,
-      statistics,
-      count: statistics.length
+      message: 'Query statistics require relational persistence and are currently disabled.',
+      statistics: [],
+      count: 0
     });
   } catch (error: any) {
     console.error('❌ [Analytics] Error:', error);
@@ -86,20 +60,13 @@ analyticsRouter.get('/queries', async (req: Request, res: Response) => {
  */
 analyticsRouter.post('/clean-cache', async (req: Request, res: Response) => {
   try {
-    if (!databaseService.isEnabled()) {
-      return res.json({
-        success: true,
-        message: 'Database is disabled. Set ENABLE_DATABASE=true to enable cache cleanup.',
-        deleted: 0
-      });
-    }
-
-    const deleted = await databaseService.cleanExpiredCache();
+    const deleted = await cacheService.cleanExpiredMemory();
 
     res.json({
       success: true,
       deleted,
-      message: `Cleaned ${deleted} expired cache entries`
+      cache: cacheService.status(),
+      message: `Cleaned ${deleted} expired in-memory cache entries`
     });
   } catch (error: any) {
     console.error('❌ [Analytics] Error:', error);

@@ -70,6 +70,25 @@ except ImportError:
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# If OpenAI key is invalid (401 invalid_api_key), disable extraction for that key
+# to avoid repeated failing network calls on every request.
+_OPENAI_DISABLED_FOR_FINGERPRINT: Optional[str] = None
+_OPENAI_DISABLED_REASON: Optional[str] = None
+
+
+def _log_openai_key_fingerprint() -> None:
+    """Safe startup hint: never log full OPENAI_API_KEY."""
+    k = (os.environ.get("OPENAI_API_KEY") or "").strip()
+    if not k:
+        logger.info("ℹ️ [Env] OPENAI_API_KEY: (not set or empty)")
+        return
+    if len(k) < 9:
+        logger.warning(f"ℹ️ [Env] OPENAI_API_KEY: set but very short (len={len(k)}) — check .env")
+        return
+    fp = f"{k[:6]}…{k[-4:]}"
+    logger.info(f"ℹ️ [Env] OPENAI_API_KEY fingerprint: {fp} (len={len(k)})")
+
+
 # Try to load .env file if python-dotenv is available (after logger is set up)
 try:
     from dotenv import load_dotenv
@@ -93,14 +112,7 @@ try:
         logger.warning("💡 Consider moving .env to project root for centralized configuration")
         env_loaded = True
     
-    if env_loaded:
-        # Verify OPENAI_API_KEY is loaded
-        api_key = os.environ.get("OPENAI_API_KEY")
-        if api_key:
-            logger.info(f"✅ OPENAI_API_KEY found in environment (length: {len(api_key)} chars)")
-        else:
-            logger.warning("⚠️ OPENAI_API_KEY not found in .env file(s)")
-    else:
+    if not env_loaded:
         logger.info("ℹ️ No .env file found (checked workspace root/ and services/)")
         logger.info("💡 Create a .env file at the project root with your API keys")
 except ImportError:
@@ -108,6 +120,8 @@ except ImportError:
     logger.warning("💡 Install python-dotenv to load .env files: pip install python-dotenv")
 except Exception as e:
     logger.warning(f"⚠️ Could not load .env file: {e}")
+
+_log_openai_key_fingerprint()
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -237,6 +251,32 @@ def call_openai_extract_components(query: str, timeout_seconds: int = 12) -> Opt
     Requires OPENAI_API_KEY in environment.
     Gracefully returns None on any error.
     """
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        logger.warning("🔒 OPENAI_API_KEY not set; skipping LLM extraction")
+        logger.info("💡 To enable LLM extraction, set the OPENAI_API_KEY environment variable")
+        return None
+
+    key = api_key.strip()
+    if not key:
+        logger.warning("🔒 OPENAI_API_KEY is empty after trimming; skipping LLM extraction")
+        return None
+
+    key_fp = f"{key[:6]}...{key[-4:]}" if len(key) >= 10 else f"len={len(key)}"
+    global _OPENAI_DISABLED_FOR_FINGERPRINT, _OPENAI_DISABLED_REASON
+    if _OPENAI_DISABLED_FOR_FINGERPRINT and _OPENAI_DISABLED_FOR_FINGERPRINT == key_fp:
+        logger.info(
+            "⏭️ OpenAI extraction disabled for current key (%s): %s",
+            key_fp,
+            _OPENAI_DISABLED_REASON or "invalid key",
+        )
+        return None
+    # Key changed from a previously disabled one -> re-enable attempts automatically.
+    if _OPENAI_DISABLED_FOR_FINGERPRINT and _OPENAI_DISABLED_FOR_FINGERPRINT != key_fp:
+        logger.info("🔄 OPENAI_API_KEY fingerprint changed (%s -> %s), re-enabling extraction", _OPENAI_DISABLED_FOR_FINGERPRINT, key_fp)
+        _OPENAI_DISABLED_FOR_FINGERPRINT = None
+        _OPENAI_DISABLED_REASON = None
+
     # Use the exact prompt format as specified by the user
     prompt = f"identify brand, item and quantity in this: {query}"
 
@@ -258,18 +298,12 @@ def call_openai_extract_components(query: str, timeout_seconds: int = 12) -> Opt
     logger.info(f"   System Message: {body['messages'][0]['content']}")
     logger.info(f"   Request Body: {json.dumps(body, indent=2)}")
 
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        logger.warning("🔒 OPENAI_API_KEY not set; skipping LLM extraction")
-        logger.info("💡 To enable LLM extraction, set the OPENAI_API_KEY environment variable")
-        return None
-
     req = urlrequest.Request(
         url="https://api.openai.com/v1/chat/completions",
         data=json.dumps(body).encode("utf-8"),
         headers={
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {api_key}",
+            "Authorization": f"Bearer {key}",
         },
         method="POST",
     )
@@ -346,6 +380,15 @@ def call_openai_extract_components(query: str, timeout_seconds: int = 12) -> Opt
             error_json = {}
         logger.error(f"❌ OpenAI HTTP Error {e.code}: {e.reason}")
         logger.error(f"❌ Error Response: {json.dumps(error_json, indent=2) if error_json else error_body}")
+        err_code = (error_json.get("error") or {}).get("code") if isinstance(error_json, dict) else None
+        if e.code == 401 and err_code == "invalid_api_key":
+            _OPENAI_DISABLED_FOR_FINGERPRINT = key_fp
+            _OPENAI_DISABLED_REASON = "invalid_api_key (401)"
+            logger.error(
+                "🛑 Disabling OpenAI extraction for key %s due to invalid_api_key. "
+                "Update OPENAI_API_KEY and restart (or change key at runtime) to re-enable.",
+                key_fp,
+            )
         return None
     except urlerror.URLError as e:
         logger.error(f"❌ OpenAI URL Error: {e}")

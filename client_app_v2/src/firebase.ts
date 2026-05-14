@@ -5,7 +5,11 @@ import firebaseConfig from '../firebase-applet-config.json';
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
+
+const dbId = (firebaseConfig as { firestoreDatabaseId?: string }).firestoreDatabaseId?.trim();
+/** Named DB (e.g. AI Studio) or "(default)". Empty / undefined → SDK default database. */
+export const db =
+  dbId && dbId !== '(default)' ? getFirestore(app, dbId) : getFirestore(app);
 
 // Test connection
 async function testConnection() {

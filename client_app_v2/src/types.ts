@@ -7,6 +7,8 @@ export interface Product {
   imageUrl?: string;
   link?: string;
   matchConfidence?: number; // 0 to 1
+  /** Live pricing vs Gemini gap-fill (UI: "approx.") */
+  priceSource?: 'live' | 'gemini_estimate';
 }
 
 export interface Store {

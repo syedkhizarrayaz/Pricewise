@@ -8,7 +8,10 @@ import type { CapacitorConfig } from '@capacitor/cli';
  * Then run `npm run dev` (Vite on 0.0.0.0:3000) and open the native project.
  * Android requires cleartext for http:// in dev.
  */
-const devServer = process.env.CAPACITOR_DEV_SERVER_URL?.trim();
+const rawDevServer = process.env.CAPACITOR_DEV_SERVER_URL?.trim();
+const devServer = rawDevServer
+  ? rawDevServer.replace('://0.0.0.0', '://localhost')
+  : undefined;
 
 const config: CapacitorConfig = {
   appId: 'com.pricewise.app',

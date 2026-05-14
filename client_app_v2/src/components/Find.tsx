@@ -6,7 +6,7 @@ import { cn } from '../lib/utils';
 import { MAJOR_RETAILERS, STORE_LOGOS } from '../constants';
 import { motion, AnimatePresence } from 'motion/react';
 import { Autocomplete, useJsApiLoader } from '@react-google-maps/api';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 
@@ -70,30 +70,56 @@ const StoreLogo = ({ name }: { name: string }) => {
   );
 };
 
-const PriceTable = ({ data, title }: { data: ComparisonResult[], title: string }) => {
-  if (data.length === 0) return null;
-  
-  const allProductNames = Array.from(new Set(data.flatMap(r => r.products.map(p => p.name))));
-  const sortedData = [...data].sort((a, b) => a.totalPrice - b.totalPrice);
+/** Full-basket stores first when comparing multi-item lists, then cheapest total (matches backend sort). */
+function compareUnifiedStores(a: ComparisonResult, b: ComparisonResult): number {
+  const n = a.totalItems ?? 0;
+  if (n > 1) {
+    const af = a.matchedItems === a.totalItems ? 0 : 1;
+    const bf = b.matchedItems === b.totalItems ? 0 : 1;
+    if (af !== bf) return af - bf;
+  }
+  return a.totalPrice - b.totalPrice;
+}
 
-  const formatItemName = (name: string) => {
-    // Try to split by common delimiters for quantity
-    const delimiters = [' - ', ' (', ', ', ' : '];
-    for (const delimiter of delimiters) {
-      if (name.includes(delimiter)) {
-        const [itemName, ...rest] = name.split(delimiter);
-        let quantity = rest.join(delimiter);
-        if (delimiter === ' (') quantity = '(' + quantity;
-        return (
-          <div className="flex flex-col">
-            <span className="font-bold text-foreground leading-tight">{itemName}</span>
-            <span className="text-[8px] text-muted-foreground font-medium uppercase tracking-wider mt-0.5">{quantity}</span>
-          </div>
-        );
+/** Backend lines look like: `{list item} — {store listing title}` */
+function splitProductLabel(fullName: string): { lineItem: string; listingTitle: string } {
+  const sep = fullName.indexOf(' — ');
+  if (sep >= 0) {
+    return {
+      lineItem: fullName.slice(0, sep).trim(),
+      listingTitle: fullName.slice(sep + 3).trim(),
+    };
+  }
+  return { lineItem: fullName.trim(), listingTitle: fullName.trim() };
+}
+
+/** Same ordering as backend pipeline: first-seen list lines across stores. */
+function normalizedItemOrderFromResults(data: ComparisonResult[]): string[] {
+  const order: string[] = [];
+  const seen = new Set<string>();
+  for (const store of data) {
+    for (const p of store.products) {
+      const { lineItem } = splitProductLabel(p.name);
+      if (!seen.has(lineItem)) {
+        seen.add(lineItem);
+        order.push(lineItem);
       }
     }
-    return <span className="font-bold text-foreground leading-tight">{name}</span>;
-  };
+  }
+  return order;
+}
+
+function findProductForLine(store: ComparisonResult, lineItem: string) {
+  return store.products.find((p) => splitProductLabel(p.name).lineItem === lineItem);
+}
+
+const PriceTable = ({ data, title }: { data: ComparisonResult[], title: string }) => {
+  const [listingPopup, setListingPopup] = useState<{ storeName: string; text: string } | null>(null);
+
+  if (data.length === 0) return null;
+
+  const normalizedRows = normalizedItemOrderFromResults(data);
+  const sortedData = [...data].sort(compareUnifiedStores);
 
   return (
     <div className="space-y-4">
@@ -132,33 +158,63 @@ const PriceTable = ({ data, title }: { data: ComparisonResult[], title: string }
               </tr>
             </thead>
             <tbody>
-              {allProductNames.map((productName) => {
-                const prices = data.map(s => s.products.find(p => p.name === productName)?.price).filter((p): p is number => p !== undefined);
-                const minPrice = Math.min(...prices);
+              {normalizedRows.map((lineItem) => {
+                const prices = sortedData
+                  .map((s) => findProductForLine(s, lineItem)?.price)
+                  .filter((p): p is number => p !== undefined);
+                const minPrice = prices.length ? Math.min(...prices) : 0;
 
                 return (
-                  <tr key={productName} className="border-b border-border/30 hover:bg-muted/20 transition-colors group">
-                    <td className="p-3 text-[10px] sticky left-0 bg-card/80 backdrop-blur-md z-10 border-r border-border/30 group-hover:text-foreground transition-colors leading-tight">
-                      {formatItemName(productName)}
+                  <tr key={lineItem} className="border-b border-border/30 hover:bg-muted/20 transition-colors group">
+                    <td
+                      className="p-3 text-[10px] sticky left-0 bg-card/80 backdrop-blur-md z-10 border-r border-border/30 group-hover:text-foreground transition-colors leading-tight max-w-[140px]"
+                      title={lineItem}
+                    >
+                      <span className="font-bold text-foreground line-clamp-2">{lineItem}</span>
                     </td>
                     {sortedData.map((store) => {
-                      const product = store.products.find(p => p.name === productName);
-                      const isCheapest = product?.price === minPrice;
-                      
+                      const product = findProductForLine(store, lineItem);
+                      const isCheapest = product !== undefined && product.price === minPrice && prices.length > 0;
+                      const { listingTitle } = product ? splitProductLabel(product.name) : { listingTitle: '' };
+                      const hoverText = product
+                        ? `${store.storeName}: ${listingTitle || product.name}${product.priceSource === 'gemini_estimate' ? ' (approx.)' : ''}`
+                        : '';
+
                       return (
-                        <td key={store.storeId} className="p-3 text-center">
+                        <td key={store.storeId} className="p-3 text-center align-middle">
                           {product ? (
-                            <div className={cn(
-                              "inline-flex flex-col items-center px-2 py-1 rounded-lg transition-all",
-                              isCheapest ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-500/20" : "text-foreground/80"
-                            )}>
+                            <button
+                              type="button"
+                              title={hoverText}
+                              aria-label={hoverText}
+                              onClick={() =>
+                                setListingPopup({
+                                  storeName: store.storeName,
+                                  text: listingTitle || product.name,
+                                })
+                              }
+                              className={cn(
+                                'inline-flex flex-col items-center px-2 py-1 rounded-lg transition-all cursor-help touch-manipulation',
+                                isCheapest
+                                  ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-500/20'
+                                  : 'text-foreground/80'
+                              )}
+                            >
+                              {product.priceSource === 'gemini_estimate' && (
+                                <span className="text-[6px] font-black uppercase tracking-widest text-amber-600/90 dark:text-amber-400/90 mb-0.5">
+                                  approx.
+                                </span>
+                              )}
                               <span className="text-[11px] font-black">
-                                {store.currencySymbol || '$'}{product.price.toFixed(2)}
+                                {store.currencySymbol || '$'}
+                                {product.price.toFixed(2)}
                               </span>
                               {isCheapest && (
-                                <span className="text-[6px] font-black uppercase tracking-widest mt-0.5">Cheapest</span>
+                                <span className="text-[6px] font-black uppercase tracking-widest mt-0.5">
+                                  Cheapest
+                                </span>
                               )}
-                            </div>
+                            </button>
                           ) : (
                             <span className="text-muted-foreground/30 text-[10px]">—</span>
                           )}
@@ -195,6 +251,35 @@ const PriceTable = ({ data, title }: { data: ComparisonResult[], title: string }
           </table>
         </div>
       </div>
+
+      {listingPopup && (
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 z-[55] bg-black/30"
+            aria-label="Dismiss listing details"
+            onClick={() => setListingPopup(null)}
+          />
+          <div
+            className="fixed inset-x-4 bottom-4 z-[60] max-w-md mx-auto rounded-xl border border-border bg-card p-4 shadow-lg md:bottom-auto md:top-1/2 md:left-1/2 md:w-full md:-translate-x-1/2 md:-translate-y-1/2"
+            style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+            role="dialog"
+            aria-modal="true"
+          >
+            <p className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">
+              {listingPopup.storeName}
+            </p>
+            <p className="mt-1 text-sm font-medium text-foreground">{listingPopup.text}</p>
+            <button
+              type="button"
+              className="mt-3 w-full rounded-lg bg-primary py-2 text-xs font-bold text-primary-foreground"
+              onClick={() => setListingPopup(null)}
+            >
+              Close
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
@@ -543,7 +628,7 @@ export function Find({
               className="space-y-10"
             >
               <PriceTable data={categorizedResults.major} title="Major Retailers" />
-              <PriceTable data={categorizedResults.others} title="Online and Local Stores" />
+              <PriceTable data={categorizedResults.others} title="Local & Online Stores" />
 
               <div className="flex items-center gap-3 p-4 bg-primary/5 rounded-3xl border border-primary/10">
                 <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">

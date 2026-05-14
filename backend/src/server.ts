@@ -6,7 +6,6 @@ import morgan from 'morgan';
 import { groceryPriceRouter } from './routes/groceryPrice';
 import { healthRouter } from './routes/health';
 import { analyticsRouter } from './routes/analytics';
-import { databaseService } from './services/databaseService';
 
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
@@ -48,19 +47,6 @@ app.use((err: any, req: Request, res: Response, next: any) => {
     }
   });
 });
-
-// Test database connection on startup (only if enabled)
-if (databaseService.isEnabled()) {
-  databaseService.testConnection().then((connected) => {
-    if (connected) {
-      console.log('✅ [Database] Connection pool initialized');
-    } else {
-      console.warn('⚠️ [Database] Connection failed - check your .env configuration');
-    }
-  });
-} else {
-  console.log('ℹ️ [Database] Database functionality is disabled (set ENABLE_DATABASE=true to enable)');
-}
 
 // Start server
 app.listen(PORT, () => {

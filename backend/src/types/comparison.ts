@@ -8,6 +8,8 @@ export interface Product {
   imageUrl?: string;
   link?: string;
   matchConfidence?: number;
+  /** HasData + picker vs Gemini per-item gap-fill */
+  priceSource?: 'live' | 'gemini_estimate';
 }
 
 export interface ComparisonResult {
