@@ -99,6 +99,8 @@ REDIS_URL=redis://localhost:6379
 
 See `DIGITALOCEAN_DEPLOYMENT.md` for detailed troubleshooting steps.
 
+**Step-by-step Docker + rsync + verify + debug:** see [`DEPLOYMENT_STEP_BY_STEP.md`](./DEPLOYMENT_STEP_BY_STEP.md).
+
 ## DigitalOcean Docker (Backend, simplified flow)
 
 Use the dedicated backend container image:
