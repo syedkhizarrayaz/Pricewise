@@ -6,7 +6,7 @@
  * - User queries
  * - Nearby stores
  * - Query results
- * - Cache with 24-hour TTL
+ * - Query result cache (TTL from PRICE_CACHE_TTL_SECONDS, default 2h)
  */
 
 import mysql from 'mysql2/promise';
@@ -101,18 +101,37 @@ class DatabaseService {
   }
 
   /**
-   * Generate query hash from items and location
+   * Generate cache key from items, location, optional store filter, and active pricing config.
+   * Bump PRICING_CACHE_VERSION when merge semantics change to invalidate old rows.
    */
-  generateQueryHash(items: string[], address: string, zipCode: string): string {
+  generateQueryHash(
+    items: string[],
+    address: string,
+    zipCode: string,
+    nearbyStores?: string[]
+  ): string {
     const normalized = {
-      items: items.sort().map(i => i.toLowerCase().trim()),
+      items: [...items].sort().map((i) => i.toLowerCase().trim()),
       address: address.toLowerCase().trim(),
-      zipCode: zipCode.trim()
+      zipCode: zipCode.trim(),
+      nearbyStoresKey: nearbyStores?.length
+        ? [...nearbyStores].sort().map((s) => s.toLowerCase().trim()).join('|')
+        : '',
+      providers: (process.env.PRICING_PROVIDERS || 'hasdata').trim().toLowerCase(),
+      cacheVersion: (process.env.PRICING_CACHE_VERSION || '1').trim(),
     };
-    return crypto
-      .createHash('sha256')
-      .update(JSON.stringify(normalized))
-      .digest('hex');
+    return crypto.createHash('sha256').update(JSON.stringify(normalized)).digest('hex');
+  }
+
+  /**
+   * TTL for query_cache rows (seconds via PRICE_CACHE_TTL_SECONDS). Default 2 hours.
+   */
+  getPriceCacheTtlMs(): number {
+    const sec = parseInt(process.env.PRICE_CACHE_TTL_SECONDS || '', 10);
+    if (!Number.isFinite(sec) || sec <= 0) {
+      return 2 * 60 * 60 * 1000;
+    }
+    return sec * 1000;
   }
 
   /**

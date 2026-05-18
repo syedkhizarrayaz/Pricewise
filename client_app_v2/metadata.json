@@ -1,0 +1,5 @@
+{
+  "name": "Pricewise",
+  "description": "Compare grocery prices across nearby stores and build your smartest shopping list.",
+  "requestFramePermissions": ["geolocation"]
+}

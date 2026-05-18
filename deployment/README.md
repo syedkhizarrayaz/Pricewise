@@ -83,7 +83,86 @@ curl http://localhost:8000/health
 curl http://localhost:3001/api/health
 ```
 
+### Cache mode (Redis first, memory fallback)
+
+Backend caching no longer depends on MySQL:
+- If `REDIS_URL` is set and reachable → Redis cache
+- Else → in-memory cache
+
+Recommended env:
+```env
+PRICE_CACHE_TTL_SECONDS=86400
+REDIS_URL=redis://localhost:6379
+```
+
 ## Troubleshooting
 
 See `DIGITALOCEAN_DEPLOYMENT.md` for detailed troubleshooting steps.
+
+**Step-by-step Docker + rsync + verify + debug:** see [`DEPLOYMENT_STEP_BY_STEP.md`](./DEPLOYMENT_STEP_BY_STEP.md).
+
+## DigitalOcean Docker (Backend, simplified flow)
+
+Use the dedicated backend container image:
+- `deployment/digitalocean/Dockerfile`
+
+This image runs only the Node backend (`/api/grocery/search` + `/api/grocery/compare-unified`)
+with the new simplified pipeline (HasData + OpenAI selection). Python matcher/Gemini reconcile
+paths are not required for this runtime flow.
+
+Build from repo root:
+```bash
+docker build -f deployment/digitalocean/Dockerfile -t pricewise-backend:latest .
+```
+
+Run:
+```bash
+docker run -d --name pricewise-backend \
+  -p 3001:3001 \
+  --restart unless-stopped \
+  pricewise-backend:latest
+```
+
+## Hugging Face Spaces (Docker)
+
+For quick hosted backend testing (client + TestFlight) you can deploy a single
+container that runs:
+- Python matcher on internal `:8000`
+- Node backend on public `:7860`
+
+Files:
+- `deployment/huggingface/Dockerfile`
+- `deployment/huggingface/start.sh`
+
+### Space setup
+
+1. Create a new Hugging Face Space with **SDK: Docker**.
+2. Copy these folders into the Space repo root:
+   - `backend/`
+   - `services/`
+   - `deployment/huggingface/`
+3. In the Space repo, place Docker artifacts at root:
+   ```bash
+   cp deployment/huggingface/Dockerfile .
+   cp deployment/huggingface/start.sh .
+   ```
+4. Add Space variables/secrets:
+   - `HASDATA_API_KEY` (required for live prices)
+   - `UNWRANGLE_API_KEY` (optional provider)
+   - `OPENAI_API_KEY` (optional OpenAI fallback/reconcile)
+   - `GEMINI_API_KEY` (optional Gemini draft/reconcile)
+   - `FRONTEND_URL` (optional; use your app origin or `*` for testing)
+   - `ENABLE_DATABASE=false` (recommended for Space testing)
+
+### Health check
+
+After deployment, verify:
+```bash
+curl https://<your-space-subdomain>.hf.space/api/health
+```
+
+Then point `client_app_v2` to:
+```env
+VITE_BACKEND_URL=https://<your-space-subdomain>.hf.space
+```
 

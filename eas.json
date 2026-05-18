@@ -1,9 +1,13 @@
 {
   "cli": {
-    "version": ">= 5.0.0"
+    "version": ">= 5.0.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
+      "ios": {
+        "credentialsSource": "local"
+      },
       "developmentClient": true,
       "distribution": "internal"
     },

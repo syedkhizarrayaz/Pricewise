@@ -10,18 +10,20 @@ export interface PythonMatcherResponse {
 }
 
 export class PythonMatcherService {
-  private baseUrl: string;
   private timeout: number;
 
   constructor() {
-    this.baseUrl = process.env.PYTHON_SERVICE_URL || 'http://localhost:8000';
     this.timeout = 30000; // 30 seconds
+  }
+
+  private getBaseUrl(): string {
+    return (process.env.PYTHON_SERVICE_URL || 'http://localhost:8000').replace(/\/$/, '');
   }
 
   async matchProducts(query: string, hasdataResults: any[]): Promise<PythonMatcherResponse> {
     try {
       const response = await axios.post(
-        `${this.baseUrl}/match-products`,
+        `${this.getBaseUrl()}/match-products`,
         {
           query,
           hasdata_results: hasdataResults,
@@ -48,7 +50,7 @@ export class PythonMatcherService {
   ): Promise<any> {
     try {
       const response = await axios.post(
-        `${this.baseUrl}/match-products-for-stores`,
+        `${this.getBaseUrl()}/match-products-for-stores`,
         {
           query,
           hasdata_results: hasdataResults,
@@ -69,7 +71,7 @@ export class PythonMatcherService {
 
   async isServiceAvailable(): Promise<boolean> {
     try {
-      const response = await axios.get(`${this.baseUrl}/health`, { timeout: 5000 });
+      const response = await axios.get(`${this.getBaseUrl()}/health`, { timeout: 5000 });
       return response.status === 200;
     } catch {
       return false;
